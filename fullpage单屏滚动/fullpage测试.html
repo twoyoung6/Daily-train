@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>fullPage-dowebok</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        /* .section1 { background: url(images/1.jpg) 100% no-repeat;}
+        .section2 { background: url(images/2.jpg) 50% no-repeat;}
+        .section3 { background: url(images/3.jpg) 50% no-repeat;}
+        .section4 { background: url(images/4.jpg) 50% no-repeat;}
+        .section{background-size: cover;} */
+    </style>
+    <script src="tools/jquery-1.12.2.min.js"></script>
+    <script src="tools/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            $('#dowebok').fullpage({
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+                'navigation': true,
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="dowebok">
+    <div class="section section1"></div>
+    <div class="section section2"></div>
+    <div class="section section3"></div>
+    <div class="section section4"></div>
+</div>
+</body>
+</html>

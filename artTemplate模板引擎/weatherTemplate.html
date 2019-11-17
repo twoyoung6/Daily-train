@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.container {
+				width: 400px;
+				background-color: #007AFF;
+				margin: 0 auto;
+				padding: 10px;
+				text-align: center;
+				color:#F1F1F1;
+			}
+			
+			li {
+				list-style: none;
+				text-align: left;
+			}
+			h1{
+				text-align: center;
+				font-size: 18px;
+			}
+		</style>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="template.js" type="text/javascript" charset="utf-8"></script>
+		<!--模板-->
+		<script type="text/html" id="weather">
+			{{if weather}}
+				{{each weather as value}}
+				<h1>日期：{{value.date}}</h1>
+				<ul>
+					<li>白天</li>
+					<li>{{value.info.day[1]}}</li>
+					<li>温度：{{value.info.day[2]}}</li>
+					<li>风向：{{value.info.day[3]}}</li>
+					<li>风速：{{value.info.day[4]}}</li>
+				</ul>
+				<ul>
+					<li>夜间</li>
+					<li>小雨{{value.info.night[1]}}</li>
+					<li>温度：{{value.info.night[2]}}</li>
+					<li>风向：{{value.info.night[3]}}</li>
+					<li>风速：{{value.info.night[4]}}</li>
+				</ul>
+				{{/each}}
+			{{/if}}
+		</script>
+		<!--ajax请求数据-->
+		<script type="text/javascript">
+			$(function(){
+				var query = $('#query');
+				var city = $('#city');
+				query.click(function(){
+					var value = city.val();
+					$.ajax({
+						type:'get',
+						jsonp:'_jsonp',
+						dataType:'jsonp',
+						url:'http://cdn.weather.hao.360.cn/api_weather_info.php',
+						data:{app:'hao360',code:value},
+						jsonpCallback:'cb',
+						success:function(data){
+							console.log(data);
+							var html = template('weather',data);
+							console.log(html);
+							$('#info').html(html);
+						}
+					})
+				});
+			});
+			
+		</script>
+	</head>
+	<div class="container">
+		<select name="city" id="city">
+			<option value="101010100">北京</option>
+			<option value="101020100">上海</option>
+			<option value="101280101">广州</option>
+			<option value="101280601">深圳</option>
+		</select>
+		<input type="button" name="query" id="query" value="查天气" />
+		<div class="info" id='info'></div>
+	</div>
+
+	<body>
+	</body>
+
+</html>

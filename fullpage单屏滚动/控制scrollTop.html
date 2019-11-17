@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    .box {
+      width: 850px;
+      height: 450px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div style="background:#FEE;">1</div>
+    <div style="background:#EFE;">2<br/>2222<br/>2222<br/>2222</div>
+    <div style="background:#EEF;">3</div>
+    <div style="background: yellowgreen;">4</div>
+  </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var box = document.querySelector('.box');
+    var itv, height = box.offsetHeight;
+    var page = scrollTop() / height | 0;
+    console.log(page);
+    //窗口大小改变事件
+    addEventListener("resize", onresize, false);
+    onresize();
+    //滚轮事件
+    box.addEventListener(
+      "onwheel" in document ? "wheel" : "mousewheel",
+      function (e) {
+        clearTimeout(itv);
+        itv = setTimeout(function () {
+          var delta = e.wheelDelta / 120 || -e.deltaY / 3;
+          page -= delta;
+          var max = (box.scrollHeight / height | 0) - 1;
+          if (page < 0) return page = 0;
+          if (page > max) return page = max;
+          move();
+        }, 100);
+        e.preventDefault();
+      }
+    );
+    //平滑滚动
+    function move() {
+      var value = height * page;
+      var diff = scrollTop() - value;
+      (function callee() {
+        diff = diff / 1.2 | 0;
+        scrollTop(value + diff);
+        console.log(value + diff)
+        if (diff) itv = setTimeout(callee, 16);
+      })();
+    };
+    //resize事件
+    function onresize() {
+      height = box.offsetHeight;
+      move();
+    };
+    //获取或设置scrollTop
+    function scrollTop(v) {
+      box.scrollTop = v;
+    };
+  });
+</script>
+
+</html>

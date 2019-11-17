@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      width: 960px;
+      height: 2000px;
+      margin: 0 auto;
+      border: 1px dotted #432432;
+    }
+
+    #main div {
+      transition: all ease 1s;
+    }
+
+    ul,
+    li {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .nav {
+      border: 1px solid #000;
+      height: 30px;
+      z-index: 9999;
+      position: fixed;
+      top: 0px;
+      _position: absolute;
+      _top: expression(documentElement.scrollTop + "px");
+    }
+
+    .nav li {
+      float: left;
+      font-size: 16px;
+      line-height: 30px;
+      padding: 0px 63px;
+      background: #C0C0C0;
+    }
+
+    .nav li a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .nav li:hover {
+      background: #23ded3;
+    }
+
+    #main {
+      height: 1000px;
+      border: 1px solid #f00;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="nav">
+    <li><a href="javascript:;" data-tab="eat">吃饭</a></li>
+    <li><a href="javascript:;" data-tab="sleep">睡觉</a></li>
+    <li><a href="javascript:;" data-tab="walk">逛街</a></li>
+  </ul>
+  <div id="main" style="width:960px; height: auto;">
+    <div data-tab="eat" style="background:cyan; height:500px;">
+      吃饭
+    </div>
+    <div data-tab="sleep" style="background:lightgreen;height:2000px;">
+      睡觉
+    </div>
+    <div data-tab="walk" style="background:LightSalmon;height:1000px;">
+      逛街
+    </div>
+  </div>
+    <script type="text/javascript">
+      document.querySelectorAll('.nav a').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var dHeight = document.documentElement.clientHeight;
+          var target = document.querySelector('div[data-tab=' + this.getAttribute('data-tab') + ']')
+          target.style.height = dHeight - 30 + "px";
+          target.scrollIntoView(false);
+        })
+      })
+    </script>
+</body>
+
+</html>

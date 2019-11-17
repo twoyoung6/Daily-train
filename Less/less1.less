@@ -1,0 +1,43 @@
+@size: 30px;
+@color: #e92300;
+@bg: #000;
+@border: 1px solid #fff;
+@center: 0 auto;
+.w(@w : 200px) {
+  width: @w;
+}
+
+;
+.h(@h : 200px) {
+  height: @h;
+}
+
+;
+@radius: 100%;
+.in {
+  background: @bg;
+  border: @border;
+  .w();
+  .h();
+  border-radius: @radius;
+}
+
+.out(@translate : 200px) {
+  transform: translateX(@translate);
+  transition: all 1s;
+}
+
+div {
+  font-size: @size;
+  color: @color;
+  .in;
+  &:hover {
+    .out();
+  }
+  > .box {
+    .w(100px);
+    .h(100px);
+    background: #fff;
+    margin: @center;
+  }
+}

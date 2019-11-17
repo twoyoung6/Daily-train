@@ -1,0 +1,26 @@
+.in {
+  background: #000;
+  border: 1px solid #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+div {
+  font-size: 30px;
+  color: #e92300;
+  background: #000;
+  border: 1px solid #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+div:hover {
+  transform: translateX(200px);
+  transition: all 1s;
+}
+div > .box {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  margin: 0 auto;
+}

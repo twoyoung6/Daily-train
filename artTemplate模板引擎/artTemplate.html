@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>arttemlate模板demo</title>
+		<!--引入模板插件-->
+		<script src="template.js" type="text/javascript" charset="utf-8"></script>
+		<!--创建模板-->
+		<script type="text/html" id="template">
+			<h1>{{title}}</h1> 
+			<ul>
+			{{if books}}
+				{{each books as value i}}
+					<li>{{value}}</li>
+				{{/each}}
+			
+			{{/if}}
+			{{if author}}
+				{{each author as value i}}
+					<li>{{value}}</li>
+				{{/each}}
+			{{/if}}
+			</ul>
+		</script>
+		<!--渲染模板-->
+		<script type="text/javascript">
+			window.onload = function() {
+				//				用数据ajax请求到的数据 data 来渲染页面
+				var data = {
+					title: '图书信息',
+					books: ['偷影子的人', '小王子', '朴槿惠自传', '品味四讲'],
+					author:['安娜', '折页', '朴熟悉', '耶夫']
+				};
+				var html = template('template', data);
+				var content = document.getElementById("box");
+				content.innerHTML = html;
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box" id="box"></div>
+	</body>
+
+</html>

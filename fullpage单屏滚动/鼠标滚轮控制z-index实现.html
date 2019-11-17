@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      margin: 0px;
+      ;
+      padding: 0px;
+      list-style: none;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .container {
+      width: 850px;
+      height: 490px;
+      position: relative;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    .con {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: all ease .6s;
+    }
+
+    .con.active {
+      transition: all 2s;
+    }
+
+    .container .list {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+    }
+
+    .container .list li {
+      width: 18px;
+      padding: 50px 3px;
+      color: #333;
+      border: 1px solid #2196f3;
+      background-color: #fff;
+      margin-bottom: 30px;
+      z-index: 20;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .container .list li.current {
+      color: #fff;
+      border: 1px solid #fff;
+      background-color: #2196f3;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div id="box">
+      <div class="con" id="one" style="z-index: 3"></div>
+      <div class="con" id="two"></div>
+    </div>
+    <ol id="list" class="list">
+      <li title="基本信息">(1)基本信息</li>
+      <li title="计价管理卡配置">计价管理卡配置</li>
+    </ol>
+  </div>
+</body>
+<script>
+  var container = document.getElementById("container");
+  var list = document.getElementById("list");
+  var box = document.getElementById("box");
+  var cons = box.children;
+  console.log(cons.length);
+  // var zIdx = 10;
+  var nn = 0;
+  var currentPosition = 0;
+  //添加小圆点
+  var arr = ["#ccc", "#2f4590", "#aa4500"];
+  for (var i = 0; i < cons.length; i++) {
+    cons[i].style.backgroundColor = arr[i];
+    // var li = document.createElement("li");
+    // list.appendChild(li);
+  }
+
+  list.children[0].className = "current";
+
+  //e.wheelDelta > 0滚轮向下滚动，e.wheelDelta < 0表示滚轮向上滚动
+
+  window.onmousewheel = function (e) {
+
+    if (e.wheelDelta > 0) {
+      currentPosition++;
+
+      if (currentPosition > cons.length - 1) {
+        currentPosition = 0;
+      }
+
+      for (var i = 0; i < cons.length; i++) {
+        cons[i].style.display = 'none';
+        list.children[i].className = "";
+        cons[i].className = "con";
+      }
+
+      console.log(currentPosition);
+      cons[currentPosition].style.display = 'block';
+      cons[currentPosition].className = "con active";
+      list.children[currentPosition].className = "current";
+    } else {
+      currentPosition--;
+
+      if (currentPosition < 0) {
+        currentPosition = cons.length - 1;
+      }
+
+      for (var i = 0; i < cons.length; i++) {
+        cons[i].style.display = 'none';
+        list.children[i].className = "";
+        cons[i].className = "con";
+      }
+
+      console.log(currentPosition);
+      cons[Math.abs(currentPosition)].style.display = 'block';
+      cons[currentPosition].className = "con active";
+      list.children[Math.abs(currentPosition)].className = "current";
+
+    }
+
+  }
+</script>
+
+</html>
