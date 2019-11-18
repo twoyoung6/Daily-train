@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .bigbox{
+            width: 600px;
+            height: 300px;
+            display: table-cell;
+            vertical-align: middle;
+            border: 2px dashed #000;
+            text-align: center;
+        }
+        .box{
+            background: #24c5fd;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .bigbox1{
+            width: 600px;
+            height: 300px;
+            border: 2px dashed #000;
+            position: relative;
+        }
+        .box1{
+            background: #fde0c6;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .bigbox2{
+            width: 600px;
+            height: 300px;
+            border: 2px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box2{
+            background: #1dff5c;
+
+        }
+    </style>
+</head>
+<body>
+<div class="bigbox">
+    <div class="box"><h1>我会水平垂直居中1</h1></div>
+</div>
+<div class="bigbox1">
+    <div class="box1"><h1>我会水平垂直居中2</h1></div>
+</div>
+<div class="bigbox2">
+    <div class="box2"><h1>我会水平垂直居中3</h1></div>
+</div>
+</body>

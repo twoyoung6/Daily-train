@@ -1,0 +1,103 @@
+<!-- 闭包 -->
+-->开发中我们希望有一些数据更加安全，让外部只能通过特定方法调用这部分数据的时候，
+考虑采用闭包，将数据隔离起来。
+-->在函数内部再定义另一个函数，在新函数内部返回我们要的原始数据，最后返回这个新定义的函数，这样我们就只要调用函数一次就可以获得闭包中的数据了。
+-->闭包的基本结构：
+<html>
+	<script>
+		function foo(){
+			var num = 123;
+			return function (){
+				return num;
+			}
+		}
+	</script>
+
+	-->闭包的应用1：返回多个数据，将数据用对象封装
+	(function(){
+        function creatHero(name ,skill){
+            var hasChangeGender = false;
+            return {
+                get_name: function(){
+                    return name;
+                },get_skill: function(){
+                    return skill;
+                },set_skill: function( value ){
+                    if(hasChangeGender == false){
+                        skill = value;
+                        hasChangeGender = true;
+                    }else{
+                        throw new Error('已经改过一次技能了');
+                    }
+                }
+            }
+        }
+        var hero = creatHero("大鱼","大浪");
+        console.log(hero.get_name());
+        console.log(hero.get_skill());
+
+        -->闭包的应用2：模拟window.onload事件
+        //    带有私有数据的对象实例
+    var itcast = (function () {
+        var data = [];
+        for (var i = 0; i < data.length; i++) {
+            window.onload = function () {
+                data[i]();
+            }
+        }
+//        添加事件方法，存入数组
+        return {
+            addEvent: function (fn) {
+                data.push(fn);
+            }, removeEvent: function (fn) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                //删除数组，数组长度会发生变化，后面的项索引也发生变化，所以从后往前便利删除
+                    if (fn = data[i]) {
+                        data.splice(i, 1);
+                    }
+                }
+            }
+        }
+    })();
+    itcast.addEvent(function () {
+        console.log("哈哈");
+    });
+
+    -->闭包的应用3：缓存函数的封装
+    var cache = (function () {
+		var data = [], max = 3;
+		// 去掉 var 的目的是为了使得变量编程全局变量, 可以调试查看 data 中的数据
+		// 开发中不允许省略 var
+
+		function cache ( key, value ) {
+
+			// 做判断, 如果超出范围, 则, 将最开始加入的 移除 
+			// 将数组 第 0 项元素移除的 splice, shift
+			if ( data.length >= 3 ) {
+				// 需要先移除
+				var temp = data.shift();
+				delete cache[ temp ];
+			} 
+
+			data.push( key );
+
+			cache[ key ] = value;
+		}
+		return cache;
+	})();
+
+
+	cache( 'name1', '张三' );
+	cache( 'name2', '李四' );
+	cache( 'name3', '王五' );
+	cache( 'name4', '找钱' );
+
+
+	var v = cache( key );
+	if ( !v ) {
+		// 计算 v
+		v = ....
+		cache( key, v );
+	}
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="tools/style.js"></script>
+    <style>
+        .box {
+            color: #008080;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id='cas'></canvas>
+    <canvas width="300" height="300" id='cas1'></canvas>
+    <canvas width="400" height="400" id='cas2'></canvas>
+</body>
+<script>
+    var cas = document.getElementById('cas');
+    var ctx = cas.getContext('2d');
+    var line = new Line({
+        ctx: ctx,
+        x0: 10,
+        y0: 10,
+        x1: 100,
+        y1: 100,
+        lineWidth: 20,
+        strokeStyle: '#008080'
+    });
+    line.stroke();
+
+</script>
+<script>
+    var cas1 = document.getElementById('cas1');
+    var ctx = cas1.getContext('2d');
+    var rect = new Rect({
+        ctx: ctx,
+        x: 10,
+        y: 10,
+        width: 150,
+        height: 150,
+        lineWidth: 5,
+        strokeStyle: '#00ff20',
+    });
+    rect.stroke();
+
+</script>
+<script>
+    var cas2 = document.getElementById('cas2');
+    var ctx = cas2.getContext('2d');
+    var circle = new Canvas({
+        ctx:ctx,
+        x0:150,
+        y0:150,
+        r:100,
+        a0:45,
+        a1:-45,
+        isFill:true,
+        fillStyle:'#ff7f5f'
+    });
+    circle.circle();
+</script>
+</html>

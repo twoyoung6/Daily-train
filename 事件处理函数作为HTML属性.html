@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件处理脚本程序</title>
+<meta name="Keywords" content=""/>
+<meta name="Description" content="" />
+<link href="/favicon.ico" type="image/x-icon" rel="icon" />
+<script type="text/javascript">
+      window.onload=preload;//窗口属性调用函数
+      function preload(){
+            var  linkId=document.getElementById("linkId");
+            lz=new Array();//全局变量
+            lz[0]=new Image();//预加载图片
+            lz[0].src="images/biaoqing (1).jpg";
+
+            lz[1]=new Image();
+            lz[1].src="images/biaoqing (6).jpg";
+
+            linkId.onmouseover=action;//连接上的事件属性，action是事件函数作为链接linkID的属性
+            linkId.onmouseout=reaction;//同上
+      }
+      function action(){
+            document.images["face"].src=lz[0].src;
+           //body.style.backgroundColor="black";
+           document.getElementById("xx").style.backgroundColor="white";
+      }
+      function reaction(){
+            document.images["face"].src=lz[1].src;
+            document.getElementById("xx").style.backgroundColor="#ebebeb";
+      }
+</script>
+<style>
+body{margin: 100px auto;width: 600px;background-color: #ebebeb;}
+img{margin: 0 auto;display: block;}
+</style>
+</head>
+
+<body id="xx">
+<h1>本javascript实现了HTML与js完全分离</h1>
+<a href="" id="linkId">
+      <img src="images/biaoqing (6).jpg" name="face" width="300" height="300">
+</a>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 两变量交换 -->
+    <!-- <script type="text/javascript">
+        var a=30;
+        var b=20;
+        var a=a+b;
+        b=a-b;
+        a=a-b;
+        console.log(a);
+        console.log(b);
+    </script> -->
+    <!-- 判断是否为数字 -->
+    <!-- <script type="text/javascript">
+        var name=prompt("输入汽油的型号");
+            if (isNaN(name)) {
+            console.log("输入正确的汽油型号");
+        }
+        else{
+            console.log("您输入的汽油型号为："+name);
+        }
+    </script> -->
+    <!-- 判断是否有值 -->
+    <!-- <script type="text/javascript">
+        var messa=0;
+        if (messa) {
+            console.log("有值");
+        }
+        else {
+            console.log("无值");
+        }
+    </script> -->
+    <!-- 运算符++，减减, -->
+    <!-- <script type="text/javascript">
+        //5            2  +  3
+        var a=1;var b=++a + ++a;//++a>先对a加一,a=a+1;a++>先返回表达式值，再对值加一
+        console.log(b);
+        //4             2  + 2
+        var a=1;var b=++a + a++;//后边的a++先返回a的值
+        console.log(b);
+        //4             1  +  3
+        var a=1;var b=a++ + ++a;
+        console.log(b);
+        //3            1  +  2
+        var a=1;var b=a++ + a++;
+        console.log(b);
+    </script> -->
+    <!-- <script type="text/javascript">
+        var n1= prompt("请输入有效值n1");
+        var n2= prompt("请输入有效值n2");
+        // 判断是否为有效值
+        n1= n1||0;//如果n1,n2没有有效值，用或运算符给n1,n2初始值0
+        n2= n2||0;
+        console.log(n1+n2);
+    </script> -->
+    <!-- 打印左下角的直角五角星矩阵 -->
+    <!-- <script type="text/javascript">
+        for (var i = 0; i <= 10; i++) {
+            for (var j = 0; j < i; j++) {
+                    document.write("★");
+                }
+                    document.write("<br/>");
+                }
+    </script> -->
+    <!-- <script type="text/javascript">
+    //把百分制转换成adcv
+    var score = prompt("您的成绩");
+    //比较某个值的范围，用if
+    if (score > 90) {
+        console.log("A");
+    }
+    else if (score >60) {
+        console.log("B");
+    }
+    else{
+        console.log("不及格");
+    }
+    </script> -->
+    <!-- switch只能用来判断是否相等 -->
+    <script type="text/javascript">
+        //switch 判断相等的时候用的是全等====，会判断数据类型和数值
+        //var today=new Date();//获取今天的日期
+        //var week=today.getDay();//获取今天日期的周数
+        // switch (week){
+        // 	case 0:
+        // 	console.log("星期日");
+        // 	break;
+        // 	case 1:
+        // 	console.log("星期一");
+        // 	break;
+        // 	case 2:
+        // 	console.log("星期二");
+        // 	break;
+        // 	case 3:
+        // 	console.log("星期三");
+        // 	break;
+        // 	case 4:
+        // 	console.log("星期四");
+        // 	break;
+        // 	case 5:
+        // 	console.log("星期五");
+        // 	break;
+        // 	case 6:
+        // 	console.log("星期六");
+        // 	break;
+        // 	default :
+        // 	console.log("世界末日");
+        // 	break;
+        // }
+        // 获取今日的月数，并判断是几月
+        // var month=today.getMonth();
+        // switch(month){
+        // 	case 0:
+        // 	console.log("一月份");
+        // 	break;
+        // 	case 1:
+        // 	console.log("二月份");
+        // 	break;
+        // 	case 2:
+        // 	console.log("三月份");
+        // 	break;
+        // 	case 3:
+        // 	console.log("四月份");
+        // 	break;
+        // 	case 4:
+        // 	console.log("五月份");
+        // 	break;
+        // 	case 5:
+        // 	console.log("六月份");
+        // 	break;
+        // 	case 6:
+        // 	console.log("七月份");
+        // 	break;
+        // 	case 7:
+        // 	console.log("八月份");
+        // 	break;
+        // 	case 8:
+        // 	console.log("九月份");
+        // 	break;
+        // }
+
+        //打印1-100,以及求1-100的和
+        // var sum = 0;
+        // for (var i = 1; i <=100; i++) {
+        // 	var sum =sum + i;
+        // }
+        // document.write(sum);
+
+        // 求1-100所有偶数的和，所有奇数的和
+        // var b=0,c=0;
+        // for (var i = 1; i <= 100; i++) {
+        // 	var a=i%2;
+        // 	if (a==0) {
+        // 		b=b+i;
+        // 	}
+        // 	else{
+        // 		c=c+i;
+        // 	}
+        // }
+        // document.write("所有偶数的和："+b+"<br/>");
+        // document.write("所有奇数的和："+c);
+        //
+        // 银行计算本金利息
+        // var gold=10000;
+        // for (var i = 0; i < 5; i++) {
+        // 	gold*=1+0.003;//计算每年新的本金
+        // }
+        // document.write(gold);
+        //
+        // 兔子繁殖1,1,2,3,5,8,13,21;斐波那契数列
+        // var sum=0;
+        // var m1=1;m2=1;
+        // for (var i = 3; i <= 12; i++) {
+        // 	sum=m1+m2;
+        // 	m1=m2;
+        // 	m2=sum;
+        // }
+        // document.write(m2);
+        //
+        // 打印9*9乘法表
+//        document.write("<table>");
+//        for (var i = 1; i < 10; i++) {
+//            document.write("<tr>");
+//            for (var j = 1; j <= i; j++) {
+//                document.write("<td>");
+//                document.write(i + "*" + j + "=" + i * j);
+//                document.write("</td>");
+//            }
+//            document.write("</tr>");
+//        }
+//        document.write("</table>");
+        //
+        // 打印正方形笑脸
+        // for (var i = 0; i < 10; i++) {
+        // 	for (var j = 0; j < 10; j++) {//打印直角三角形则将j<i即可；
+        // 		document.write("😁&nbsp");
+        // 	}
+        // document.write("<br/>");//外层循环结束处加上换行
+        // }
+        //
+        // 计算1-1000以内所有不能被7整除的整数之和大于等于2000的数字
+        // 1000以内，不能被7整除，求和，大于等于2000的
+        // var sum=0;
+        // for (var i = 1; i < 1000; i++) {
+        // 	var more=i%7;
+        // 	if (more === 0) {//用全等写法continue结束当前循环，找出不能被整除的
+        // 		continue;
+        // 	}
+        // 	sum=sum+i;
+        // 	if (sum>=2000) {
+        // 		console.log(sum);
+        // 		break;//结束当前循环
+        // 	}
+        // 	}
+        // //200~300之间所有的奇数的和
+        // var sum=0;
+        // for (var i = 200; i < 300; i++) {//当循环次数已知用for循环更快捷
+        // 	if (i%2===0) {
+        // 		continue;
+        // 	}
+        // 	sum=sum+i;
+        // 	console.log(sum);
+        // }
+        // 200~300之间所有的奇数的和，另一种写法
+        // var sum=0;
+        // for (var i = 200; i < 300; i++) {
+        // 	if (i%2!==0) {
+        // 		sum=sum+i;
+        // 		console.log(sum);
+        // 	}
+        // }
+        //
+        //任意输入一个数，判断它是几位数
+        //prompt 返回的是字符串
+        // function number(){
+        // 	var num = Number(prompt("请填写任意整数，我知道你是几位数"));//验证用户输入的数是否为合法；parseInt转换数据类型,可能的数据类型是NaN,整数,0；当出现数字加字母的类型，字母也会转换成位数;所以采用Number();进行转换
+        // 	i=1;//记录被10整除的次数，除一次就是有一位。123/10=12.3>10,12.3/10=1.23<10;除了两次所以是两位数
+        // 	if (num){
+        // 	//判断是否为数值且是否大于等于10，0为false不会执行，跳转到下面
+        // 			if(num<10&&num>0){
+        // 				console.log("1位数");
+        // 				}
+        // 			else {
+        // 				while (num>=10){
+        // 					num=parseInt(num / 10);
+        // 					i++;
+        // 				}
+        // 			return i;
+        // 			}
+        // 	}
+        // 	// else if(num < 10 && num > 0)	{//判断数值小于10大于0的情况
+        // 	// 		console.log("1位数");
+        // 	// }
+        // 	else if(num==0){
+        // 		return 1;
+        // 	}
+        // 	else {
+        // 		alert("您输入的是什么");
+        // 	}
+        // }
+        // 	console.log(number());
+        // var num=prompt("请填写任意负数");
+        // var num=Number(num);
+        // console.log(num);
+        // console.log("数据类型为："+typeof(num));
+        // for (var i = 0; i < 10; i++) {
+        // 	num=parseInt();
+        // }
+        // 	输入一个数，反转每位上的数字再输出
+        // 	1.验证输入一个合法数；2.反转
+        // 	1234
+        // 	1234%10=4   1234/10=123.4
+        // 	123%10=3     123/10=12.3
+        // 	12%10=2   12/10=1.2
+        // 	1%10=1     1/10=0.1
+        // 	不断除10取余
+        // var num=Number(prompt("请填写任意整数"));
+        // if (num) {
+        // 	var num=parseInt(num);//小数取整,不考虑小数的反转情况
+        // 	while(num!== 0){//循环开始，寻找每位上的数
+        // 		var code = num % 10;
+        //     var num =parseInt( num / 10);//每次除10变为新的Num寻找下一位上的数
+        //     document.write(code);
+        // 	}
+        // }
+        // else if (num===0) {
+        // 	document.write("0");
+        // }
+        // else{
+        // 	alert("就你会玩!");
+        // }
+        //
+        // 	do..... while 实现循环，输出"我爱你，追问你是否愿意嫁给我"？选择"y/n",y则打印"百年好合，爱你一万年！",n则继续追问
+        //
+        //	 do{
+        //	 var love = prompt("我爱你，你愿意嫁给我吗？y/n");
+        //	 }
+        //	 while(love==="n"){//do先执行一次代码，再由while 判断条件，
+        //	 	//如果成立while(true);则继续执行上面的do{statement},否则跳出循环，执行while下面的代码
+        //	 	document.write("<center>百年好合，爱你一万年！</center>");
+        //	 }
+        //
+        // 函数的自调用
+        // (function(){console.log("我可以自己调用自己")})();
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

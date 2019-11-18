@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="tools/mobirise/style.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #fff;
+            margin: 0px;
+            overflow: hidden;
+            animation: color-loop 18s infinite ease-out;
+        }
+
+        .waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: #fff;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .waves:before {
+            position: absolute;
+            background: #fff;
+            width: 40px;
+            height: 40px;
+            content: "";
+            display: block;
+            top: -80%;
+            left: -80%;
+            border-radius: 50%;
+            -webkit-backface-visibility: hidden;
+            animation: wave-animate 3s infinite ease-out;
+        }
+
+        .waves:after {
+            position: absolute;
+            background: #fff;
+            width: 80px;
+            height: 80px;
+            content: "";
+            display: block;
+            top: -32px;
+            left: -32px;
+            border-radius: 50%;
+            -webkit-backface-visibility: hidden;
+            animation: wave-animate 3s 2.5s infinite ease-out;
+        }
+
+        @keyframes wave-animate {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+                transform-origin: center;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+                transform-origin: center;
+            }
+        }
+
+        @keyframes color-loop {
+            0% {
+                background: #2CAB5B;
+            }
+            25% {
+                background: #FABC03;
+            }
+            50% {
+                background: #ED4B40;
+            }
+            75% {
+                background: #4286F3;
+            }
+            100% {
+                background: #2CAB5B;
+            }
+        }
+        span{
+        	width: 60px;
+        	height: 60px;
+        	display: inline-block;
+        	/*margin: 60px auto;*/
+        	font: 60px/60px "yahei";
+        	color: #fff;
+        }
+		.div{
+			width: 600px;
+			height: 200px;
+			margin:80px auto;
+			border: 1px solid #fff;
+			display: flex;
+			/*justify-content: flex-start;*/
+			/*justify-content: flex-end;*/
+			/*justify-content: center;*/
+			/*justify-content: space-between;*//*两端*/
+			justify-content: space-around;/*环绕*/
+			align-items: flex-start;
+			/*align-items: flex-end;*/
+			/*align-items: center;*/
+			/*align-items: space-between;*/
+		}
+		.div>span:nth-child(1){
+			align-self: flex-end;
+		}
+		.div>span:nth-child(2){
+			align-self: center;
+		}
+		.div>span:nth-child(3){
+			align-self: flex-end;
+		}
+		ul{
+			width: 60px;
+			height: 60px;
+			border-radius: 15px;
+			background: #000;
+			display: flex;
+			padding: 0;
+			list-style-type: none;
+			justify-content: space-between;
+			/*align-content: space-around;*/
+			/*flex-wrap: wrap;*/
+			/*flex-direction: column;*/
+		}
+		li{
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			margin: 5px;
+			background: #fff;
+		}
+		  ul>li:nth-child(1){
+		 			align-self: flex-end;
+		 		}
+		 ul>li:nth-child(2){
+		 			align-self: center;
+		 			margin: -6px;
+		 		}  
+		 ul>li:nth-child(3){
+			align-self: flex-s;
+		}
+		.tan{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		.header{
+			flex: 2;
+			background: #000;
+		}
+		.main{
+			width: 80%;
+			flex: 7;
+			background: #fff;
+			align-self: center;
+			display: flex;
+			
+		}
+		.aside{
+			flex: 2;
+			background: green;
+			margin-right:10%;
+		}
+		.article{
+			flex: 6;
+				background: #ff7f5f;
+		}
+		.footer{
+			flex: 1;
+			background: #000;
+		}
+    </style>
+</head>
+<body>
+<div class="waves"></div>
+<script src="tools/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).click(function (e) {
+            var top = e.pageY;
+            var left = e.pageX + $(".waves").width();
+            $(".waves").css({"left": left, "top": top});
+        })
+    });
+</script>
+<ul><li></li><li></li><li></li></ul>
+<div class="tan">
+	<div class="header"></div>
+	<div class="main">
+		<div class="aside"></div>
+		<div class="article"></div>
+	</div>
+	<div class="footer"></div>
+</div>
+<div class="div">
+	<span class="mbri-smile-face"></span>
+	<span class="mbri-paper-plane"></span>
+	<span class="mbri-windows"></span>
+</div>
+
+</body>
+</html>

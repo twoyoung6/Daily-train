@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS练习</title>
+    <script type="text/javascript">
+        //  1.网页一打开，要求依次弹出数字1-6，并且每弹出一次，页面就显示出对应的一个标题行（即从h1-h6）。
+        // 注意，页面中不应该出现h1-h6的标签，而应该是由js写出来的。
+//        function Alerth() {
+//            for (i = 1; i <= 6; i++) {
+//                alert(i);
+//                for (j = i; j <= i; j++) {
+//                    document.write("<h" + i + ">" + i + "</h" + i + " > ");
+////                    break;
+//                }
+//            }
+//        }
+//        Alerth();
+        //这个函数由于谷歌浏览器的版本问题，导致执行的效果不同。用IE、火狐都可以实现。
+
+        //        2.定义若干个js变量，需表现出js中的各种数据类型，并在页面中输出每个变量的值和其对应类型。
+        //        var a = "15ccccc";
+        //        var b = 12155353;
+        //        var c = undefined;
+        //        var d = null;
+        //        var e = [5];
+        //        var f = {};
+        //        console.log(a + typeof a);
+        //        console.log(b + typeof b);
+        //        console.log(c + typeof c);
+        //        console.log(d + typeof d);
+        //        console.log(e + typeof e);
+        //        console.log(f + typeof f);
+        //3.0
+        //        var a = {age:22}
+        //        var b =a;
+        //        console.log(b.age);//22
+        //        b.age=23;
+        //        console.log(a.age);//23
+        //        console.log(b.age);//23
+        //        4.（表达式）已知任意两个正整数（a，b），将其作为直角三角形的直角边长，求斜边长。
+        //        a^2+b^2=c^2 勾三五四弦
+        //        function getBian(a, b) {
+        //            return Math.pow(a, 2) + Math.pow(b, 2);
+        //        }
+        //        console.log(getBian(5, 6));
+
+        //        6.（表达式，运算符）一个小球从空中掉下来，求如下问题：
+        //        a)如果已知小球掉落时高度（1000m），求其触地瞬间的速度；
+        //        b)如果已知小球落地瞬间的速度（1000m/s），求其掉落时的高度）
+        //        c)附自由落体公式：自由落体运动的规律：2gh=v^2。；（其中g是重力加速度，在地球上g≈9.8m/s2；v是速度，h高度)
+
+        //        function getV(h){
+        //            return Math.sqrt(2*9.8*h);
+        //        }
+        //        console.log(getV(1000));
+        //
+        // 7.0分支结构）定义一个变量表示“分数” 并给其赋值，在页面中是根据分数高低不同输出如下文字：
+        //        优秀（>=90），良好（>=80），中等（>=70），及格（>=60），不及格（其他情况）。
+        //        ——使用if和switch两种方法来做实现
+        //        var score = prompt("请输入你的分数");
+        //        if (score >= 90) {
+        //            console.log("优秀");
+        //        }
+        //        else if (score >= 80) {
+        //            console.log("良好");
+        //        }
+        //        else if (score >= 70) {
+        //            console.log("中等");
+        //        }
+        //        else if (score >= 60) {
+        //            console.log("及格");
+        //        }
+        //        else {
+        //            console.log("不及格");
+        //        }
+        //        var intscore = parseInt(score / 10);
+        //        switch (intscore) {
+        //            case 10:
+        //                console.log("优秀");
+        //                break;
+        //            case 9:
+        //                console.log("优秀");
+        //                break;
+        //            case 8:
+        //                console.log("良好");
+        //                break;
+        //            case 7:
+        //                console.log("中等");
+        //                break;
+        //            case 6:
+        //                console.log("及格");
+        //                break;
+        //            default:
+        //                console.log("不及格");
+        //                break;
+        //        }
+        //        8.0（流程：分支与循环）输出从2000年（含）到3000年（含）间的所有闰年。
+        //        function getRun(n, m) {
+        //            for (var i = n; i <= m; i++) {
+        //                if ((i % 4 == 0 && i % 100 !== 0) || i % 400 == 0){
+        //                    console.log(i);
+        //                }
+        //            }
+        //        }
+        //       getRun(2000,3000);
+        //        9.0（循环）使用星号输出倒金字塔图案(行数由初始变量n确定)：
+        //        第一行：9
+        //        第二行：7
+        //        第三行：5
+        //        第四行：3
+        //        第五行：1
+        // 将所有质素存储在一个数组中，行数n-1作为数组的索引，则第5个质数对应arr[4]=9，也就是第一行需要打印符号的个数，
+        // 内层循环:用循环表示就是for(j=1;j<=arr[n-1];j++)
+        // 外层循环：控制 n 的大小去索引数组中的质数，用循环表示for(i=n;i>=1;i--)
+        // 外层循环每完成一次就打印多打印一个空格符，nbsp++;
+        //        function Prime() {
+        //            var arr = [];
+        //            for (i = 1; i <= 100; i++) {
+        //                if (i % 2 !== 0) {
+        //                    arr[arr.length] = i;
+        //                }
+        //            }
+        //            return arr;
+        //        }
+        //        var arr = [];
+        //        var nbsp = 0;
+        //        function Write(n) {
+        //            //建立素数数组
+        //            for (i = 1; i <= 10; i++) {
+        //                if (i % 2 !== 0) {
+        //                    arr[arr.length] = i;
+        //                }
+        //            }
+        //            //外层控制索引质数，循环打印★
+        //            for (i = n; i >= 1; i--) {
+        //                for (j = 1; j <= arr[n - 1]; j++) {
+        //                    document.write("❤");
+        //                }
+        //                document.write("<br/>");
+        //                n--;
+        //            }
+        //        }
+        //        Write(5);
+        //        10.（循环，分析）一张纸的厚度是0.01毫米，则该纸对折30次后是多厚（据说超过珠穆朗玛峰的高度）。
+        // 反过来，一张纸对折几次后，就超过1米厚了？
+        //0.01
+        //0.01+0.01  0.02 2^1*0.01
+        //0.02+0.02  0.04 2^2*0.01
+        //0.04+0.04  0.08 2^3*0.01
+        //  weight = 2^n*weight
+        //        function getWeight(n){
+        //            var weight = 0.01;
+        //            for(var i=1;i<=n;i++){
+        //                weight = Math.pow(2,i)*weight;
+        //            }
+        //            console.log(weight);
+        //        }
+        //        getWeight(30);
+        //
+        // 11.（循环，逻辑分析）输出2-200之间的所有素数（素数就是只能被1和其本身整除的数）
+        //外层控制2-200的寻找趟数for(i=2;i<=200;i++)
+        //内层循环控制每趟判断每个数是否是素数的次数，和比它小的所有数进行比较
+        //for(j=2;j<i;j++)
+        //                function getPrime(n, m) {
+        //                    for (i = n; i <= m; i++) {
+        //                        for (j = 2; j < i; j++) {
+        //                            if (i % j == 0) {
+        //                                //如果等于0，说明i这个数不是素数，结束本次循环，
+        //                                // 开始执行下一次外部循环，判断下一个数是否是素数
+        //                                break;
+        //                            }
+        //            //如果不等于0，则判断是否已经和所有小于它的数进行了比较（j==i-1），成立则输出素数
+        //                            if (j == i - 1) {
+        //                                console.log(i);
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //                getPrime(2, 200);
+
+        //        12.0循环，简单运算）使用3种循环语句计算1到100的所有数的平方和
+        //        //for循环
+        //        var sum = 0;
+        //        for (i = 1; i <= 100; i++) {
+        //            var sum = sum + Math.pow(i, 2);
+        //        }
+        ////        do while循环
+        //        var i=1;
+        //                do {
+        //                    sum = sum + Math.pow(i, 2);
+        //                    i++;
+        //                }
+        //                while (i <= 100);
+        ////        while循环
+        //        while(i<=100){
+        //            sum = sum + Math.pow(i, 2);
+        //            i++;
+        //        }
+        //        console.log(sum);
+        //        13.循环，简单逻辑）写一个程序打印1到100这些数字。但是遇到数字为3的倍数的时候，
+        // 打印“Fizz”替代数字，5的倍数用“Buzz”代替，既是3的倍数又是5的倍数打印“abcde”。
+        //        for (i = 1; i <= 100; i++) {
+        //            if (i % 3 == 0 && i % 5 !== 0) {
+        //                document.write("Fizz&nbsp&nbsp");
+        //            }
+        //            else if (i % 5 == 0 && i % 3 !== 0) {
+        //                document.write("Buzz&nbsp&nbsp");
+        //            }
+        //            else if (i % 5 == 0 && i % 3 == 0) {
+        //                document.write("abcde&nbsp&nbsp");
+        //            }
+        //            else {
+        //                document.write(i);
+        //            }
+        //        }
+        //        14.（循环，while，逻辑分析）假设某人有100,000现金。每经过一次路口需要进行一次交费。
+        //        交费规则为当他现金大于50,000时每次需要交5%,如果现金小于等于50,000时每次交5,000。
+        //        请写一程序计算此人可以经过多少次这个路口。
+        //        var gold = 100000;
+        //        var n = 0;
+        //        function getN() {
+        //            while(gold>0){
+        //                if (gold > 50000) {
+        //                    gold = gold - gold * 0.05;
+        //                    n++;
+        //                }
+        //                else if (gold <= 50000) {
+        //                    gold = gold - 5000;
+        //                    n++;
+        //                }
+        //            }
+        //            console.log(n);
+        //        }
+        //        getN();
+
+        // 15.循环，逻辑分析）有红、白、黑三种球若干个，其中红、白球共25个，白、黑球共31个，红、黑球共28个，求这三种球各多少个？
+        //2红+白+黑=25+28=53
+        //2白+红+黑=25+31=56
+        //2黑+白+红=31+28=59
+        //（红+白+黑）=（53+56+59）/4=42
+        //黑=42-25=17；红=42-31=11；白=42-28=14
+        //        function getColor(a, b, c) {
+        //            var temp = (a + b + c) / 2;
+        //            var black = temp - a;
+        //            var red = temp - b;
+        //            var white = temp - c;
+        //            console.log(black);
+        //            console.log(red);
+        //            console.log(white);
+        //        }
+        //        getColor(25, 31, 28);//分别输入红白、白黑、红黑的球的个数
+
+        //        16.（循环，逻辑分析）输入一个小于10的正整数（比如5），输出如下图案：
+        //        55555
+        //        4444
+        //        333
+        //        22
+        //        1
+        //        22
+        //        333
+        //        4444
+        //        55555
+        //        // 判断输入的数是否小于10且为正整数
+        //        // 每行打印的数字个数等于数值，
+        //        // 内层循环控制打印的数字的个数：for(j=1;j<=n;j++){document.write(n);}
+        //        // 外层循环控制打印的数值，数值由 n 依次递减到1再递增到 n : for(i=n;i>=1;i--){document.write("<br/>");}
+        //        function Write() {
+        //            var n = prompt("请输入一个小于10的正整数！");
+        //            if (n < 10 && n > 0) {
+        //                for (i = n; i >= 1; i--) {
+        //                    for (j = 1; j <= i; j++) {
+        //                        document.write(i);
+        //                    }
+        //                    document.write("<br/>");
+        //                }
+        //                for (i = 2; i <= n; i++) {
+        //                    for (j = 1; j <= i; j++) {
+        //                        document.write(i);
+        //                    }
+        //                    document.write("<br/>");
+        //                }
+        //            }
+        //            else {
+        //                alert("请输入正确的小于10的整数");
+        //            }
+        //        }
+        //        Write();
+        //        17.（函数，逻辑）定义一个函数，该函数用于判断所给的年份数是否是一个闰年。
+        //        function getRun(year) {
+        //            var isRun = false;
+        //            if ((year % 4 == 0 && year % 100 !== 0) || year % 400 == 0) {
+        //                isRun = true;
+        //            }
+        //            return isRun;
+        //        }
+        //        console.log(getRun(2000));
+
+        //        19.（函数）定义一个函数，该函数用于计算一个正数的因子和（比如6的因子和是1+2+3+6=12）
+        //        //20 1 2 4 5 10 先遍历所有小于它的数，整除能除尽则是它的因子
+        //        //让所有因子相加
+        //        function getSum() {
+        //            var n = prompt("请任意输入一个正数");
+        //            var sum = 0;
+        //            for (i = 1; i < n; i++) {
+        //                sum = sum + i;
+        //            }
+        //            return sum;
+        //        }
+        //        console.log(getSum());
+
+        //        （函数，递归）求20的阶乘（20！）
+        //        //1*2*3*4.......*19*20
+        //        //定义初始值必须在循环体之外
+        //        var facto = 1,i=2;
+        //        function Facto(n) {
+        //            //计算阶乘的基本核心语法
+        //            facto = facto * i;
+        //            i++;
+        //            //给递归调用一个结束的条件，这个很重要！！！
+        //            if (i <= n) {
+        //                //条件成立则继续调用自己
+        //                Facto(n);
+        //            }
+        //            return facto;
+        //        }
+        //        console.log(Facto(20));
+
+        //        23.（函数，递归）数列如下：1，2，4，8，16，32… ，求第20项的值是多少？
+        //        var i= 1,number=1;
+        //        function getNmber(m) {
+        ////            console.log(Math.pow(2, m - 1));//函数法
+        //            number = number * 2;
+        //            i++;
+        //            if (i <= m-1) {
+        //                getNmber(m);
+        //            }
+        //            return number;
+        //        }
+        //        console.log(getNmber(20));
+
+        //        31.0（数组）使用冒泡排序法将一个数组进行倒序(从大到小)排列。
+        //        function _Sort(arr) {
+        //            for (var i = 0; i <= arr.length - 1; i++) {
+        //                var isOk = true;
+        //                for (var j = 0; j <= arr.length - 1 - i; j++) {
+        //                    if (arr[j] < arr[j + 1]) {
+        //                        var temp = arr[j];
+        //                        arr[j] = arr[j + 1];
+        //                        arr[j + 1] = temp;
+        //                        isOk = false;
+        //                    }
+        //                }
+        //                if (isOk) {
+        //                    break;
+        //                }
+        //            }
+        //            return arr;
+        //        }
+        //        console.log(_Sort([1, 2, 3, 56, 12, 14, 0, 99, 0]));
+
+        // 32.数组）假设一个数组存储着一个班级的学生姓名，一名老师在录入学生信息的过程中，
+        // 需要判断一个学生的姓名是否已经存在于该数组，如果存在，在提示“该学生已录入！”，否则就正式记入该数组中。请写一个程序来模拟老师录入学生信息的过程。
+        //        // 1.0输入一个姓名
+        //        // 2.0遍历数组，查找数组中的字符串，比较str===arr[i]是否相等，相等则alert("该学生已录入！");
+        //        // 3.0未找到则   arr[length]=str;追加数组的数据
+        /*function getStudent(arr) {
+         var isOk = true;
+         var str = prompt("请输入你需要查询的学生姓名，不要空格！");
+         for (i = 0; i < arr.length; i++) {
+         if (str !== arr[i]) {
+         isOk = false;
+         continue;
+         }
+         else {
+         isOk = true;
+         alert("该学生已录入！");
+         break;
+         }
+         }
+         if (isOk == false) {
+         arr[arr.length] = str;
+         document.write("新的数组：" + arr);
+         }
+         return arr;
+         }
+         getStudent(["杨展", "子杨", "木小羊", "黑马"]);*/
+    </script>
+</head>
+<body style="text-align: center;">
+
+</body>
+</html>

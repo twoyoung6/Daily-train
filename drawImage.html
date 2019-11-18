@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--情况一：三个参数
+ctx.drawImage(图片对象,图片对象距离canvas x轴的距离,图片对象距离canvasy轴的距离);
+
+    情况二：五个参数
+ctx.drawImage ctx(图片对象,图片对象距离canvas x轴的距离,图片对象距离canvasy轴的距离,设置图片的宽,设置图片的高);
+
+    情况三：九个参数（绘制图片的一部分，抠图）
+ctx.drawImage(图片对象,开始剪切的x轴距离,开始剪切的y轴距离,被剪切的图片的宽,被剪切的图片的高,图片对象距离canvas x轴的距离,图片对象距离canvasy轴的距离,设置图片的宽,设置图片的高);-->
+
+    <canvas width="300" height="300" id="cas"></canvas>
+    <script>
+        function radian(angle){
+            return angle/180*Math.PI;
+        }
+        var cas = document.getElementById('cas');
+        var ctx = cas.getContext('2d');
+        // 移动坐标轴
+        ctx.translate(300,0);//x 为水平坐标移动，y为垂直坐标移动
+        // 旋转坐标轴
+        ctx.rotate(radian(90));
+        var img = new Image();
+        img.src = './images/045cf55548fc9c0000019ae9543e8f1.png';
+        var rate = img.width/img.height;
+        var width = 200*rate,
+            height = 200;
+        img.onload =function(){
+            ctx.drawImage(img,10,0,200,height);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>MUI 框架 练习</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="tools/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="tools/h.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.mui-slider-indicator .mui-indicator {
+				background: pink;
+			}
+			
+			.mui-bar {
+				background: skyblue;
+			}
+			
+			.mui-bar-tab .mui-tab-item.mui-active {
+				color: #fff;
+			}
+			
+			.mui-table-view {
+				margin-bottom: 50px;
+			}
+		</style>
+	</head>
+	<!--标题栏 快捷代码 mh-->
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">MUI练习</h1>
+	</header>
+	<!--<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">MUI练习1</h1>
+	</header>-->
+	<!--主体部分 快捷代码  mbo-->
+	<div class="mui-content">
+		<!--轮播组件  快捷代码块 mslider-->
+		<div id="slider" class="mui-slider">
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/045cf55548fc9c0000019ae9543e8f.png">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/02big.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/03big.jpg">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/4-small.jpg">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/045cf55548fc9c0000019ae9543e8f.png">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/02big.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		<!--图文列表组件  快捷代码 mlist-->
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<img class="mui-media-object mui-pull-left" src="images/045cf55548fc9c0000019ae9543e8f1.png">
+					<div class="mui-media-body">
+						幸福
+						<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<img class="mui-media-object mui-pull-left" src="images/045cf55548fc9c0000019ae9543e8f1.png">
+					<div class="mui-media-body">
+						木屋
+						<p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<img class="mui-media-object mui-pull-left" src="images/045cf55548fc9c0000019ae9543e8f1.png">
+					<div class="mui-media-body">
+						CBD
+						<p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-redo"></span>
+				<span class="mui-tab-label">分享</span>
+			</a>
+		</nav>
+	</div>
+
+	<body>
+		<script type="text/javascript">
+			mui.init();
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+				interval: 1000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+			//			事件加载函数 mui.plusReady(function(){}) 快捷代码块 mpl
+			mui.plusReady(function() {
+				//				轮播图
+
+				//				Ajax部分 快捷代码块 majax
+				mui.ajax('1canvas.html', {
+					data: {
+
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+
+					},
+					error: function(xhr, type, errorThrown) {
+
+					}
+				});
+				//				快捷代码 mpo
+				mui.post('2canvas.html', {
+
+				}, function(data) {
+
+				}, 'json');
+				//				快捷代码  mg
+				mui.get('4canvas.html', {
+
+				}, function(data) {
+
+				}, 'json');
+				//				快接代码 mjson
+				mui.getJSON('5canvas.html', {
+					category: 'news'
+				}, function(data) {
+
+				});
+			});
+			
+		</script>
+	</body>
+
+</html>

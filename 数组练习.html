@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // //用数组存储0-100的偶数
+        // var arr=[];
+        // for (var i = 0; i < 100; i++) {
+        // 	if (i%2==0) {
+        // 		arr[arr.length]=i;//每当数组新增一个数，数组长度相应加1，所以可用数组长度作为数组的索引
+        // 	}
+        // }
+        // console.log(arr);
+        //
+        // 1-100之间能被3整除的数存到数组，有多少个数
+        // 1-100循环
+        // 能被3整除
+        // 存到数组
+        // var arr=[];//定义一个数组，空数组，等同于arr=new Array();
+        // for (var i = 0; i <= 100; i++) {
+        // 	if (i % 3 == 0) {
+        // 		arr[arr.length]=i;//存储到数组arr，用arr的长度做索引
+        // 	}
+        // }
+        // //console.log(arr);
+        // //console.log(arr.length);//数组长度
+        // arr.length=35;//给数组长度赋值，改变数组的长度
+        // console.log(arr);
+        //
+        // 数组的三个小练习
+        // 1.求一组数中所有数的和和平均值
+        //
+        // var arr=new Array(12,30,2,1,45,20,0,67,1,99);
+        // var sum=0;
+        // for (var i = 0; i < arr.length; i++) {
+        // 	sum = sum + arr[i];
+        // }
+        // console.log(sum);
+        // str=sum/arr.length;
+        // console.log(str);
+        //
+        // 2.求一组数的最大值以及在数组中的位置
+        //
+        // 左右依次比较
+        // var arr=new Array(12,30,2,1,45,20,0,67,1,99);
+        // //假设数组中的第一项是最大值
+        // var max=arr[0];
+        // var min=arr[0];
+        // for (var i = 1; i < arr.length; i++) {
+        // 	if (arr[i]>max) {
+        // 		max=arr[i];//每次比较完之后，将较大值赋值给max
+        // 		maxposition=[i];
+        // 	}
+        // 	if (arr[i]<min) {
+        // 		min=arr[i];
+        // 		minposition=[i];
+        // 	}
+        // }
+        // console.log(max);
+        // console.log(maxposition);//输出最大数索引[i]的位置
+        // console.log(min);
+        // console.log(minposition);
+        //
+        //
+        // 3.将字符串数组arr["aaa","vvvvv","asdsa","rree"]用|或者@分割开
+        //
+        // var arr= ["aaa","vvvvv","asdsa","rree"];
+        // var at="@";//分隔符
+        // var newstr = arr[0];//取出第一项
+        // for (var i = 1; i < arr.length; i++) {
+        // 	newstr =newstr + at + arr[i] ;//给每一项的前面加上分隔符
+        // }
+        // console.log(newstr);
+        //
+        // 4.翻转数组arr["aaa","vvvvv","asdsa","rree"]，存入新的数组；
+        //
+        // var arr= ["aaa","vvvvv","asdsa","rree"];
+        // var newarr = [];
+        // for (var i = arr.length-1; i >= 0; i--) {//倒着遍历数组，从arr.length-1开始
+        // 	newarr[newarr.length] = arr[i];//注意：新数组的索引仍为新数组的长度
+        // }
+        // console.log(newarr);
+        //
+        // 冒泡排序优化
+        //@1.0
+        // 1两个循环，一个控制外循环，遍历整个数组的趟数；2内循环，控制每次遍历中两两比较次数；
+        // var arr=new Array(222,12,30,2,1,45,20,0,67,1,99,888);
+        // var num1=0;
+        // var num2=0;
+        // //控制遍历趟数，3个数遍历3-1=2趟
+        // for (var i = 0; i < arr.length-1; i++) {
+        // 	//控制两两比较次数
+        // 	for (var j = 0; j < arr.length-1; j++) {
+        // 		//两两开始比较，前一项和后一项比较，较大者向后移动，外循环每进行（遍历）一次，找到最大的一个值。
+        // 		if(arr[j] > arr[j + 1]){
+        // 			//改变比较的判断条件arr[j] < arr[j+1]，数组将由大至小排序
+        // 			var middle = arr[j];
+        // 			arr[j]=arr[j+1];
+        // 			arr[j+1]=middle;
+        // 		}
+        // 		num1++;//内循环比较次数
+        // 	}
+        // 	num2++;//外循环遍历次数
+        // }
+        // console.log(arr);
+        // console.log(num1);
+        // console.log(num2);
+
+        //@2.0 优化内循环，依次减少每一趟遍历的次数
+        // var arr=new Array(222,12,30,2,1,45,20,0,67,1,99,888);
+        // //控制遍历趟数，3个数遍历3-1=2趟
+        // var num1=0;
+        // var num2=0;
+        // for (var i = 0; i < arr.length-1; i++) {
+        // 	//控制两两比较次数
+        // 	//两两开始比较，前一项和后一项比较，较大者向后移动，外循环每进行（遍历）一次，找到最大的一个值。
+        // 	//j< length-1-i说明：每遍历一次结束，下一次遍历，最后的数肯定是最大值，所以最后一次的两两比较是多余的，外循环没进行一次，内循环相应的要减少一次比较；如：[1,5,6,2]第一次遍历，比较3次[1,5,2,6]；第二次遍历，比较2次(1和5，5和2)就够了[1,2,5,6]
+        // 	for (var j = 0; j < arr.length-1-i; j++) {
+
+        // 		if(arr[j] > arr[j + 1]){
+        // 			//两两比较，交换位置
+        // 			var middle = arr[j];
+        // 			arr[j]=arr[j+1];
+        // 			arr[j+1]=middle;
+        // 		}
+        // 		num1++;//内循环比较次数
+        // 	}
+        // 	num2++;//外部循环遍历次数
+        // }
+        // console.log(arr);
+        // console.log(num1);
+        // console.log(num2);
+        //
+        //
+        //@3.0继续优化外部循环，避免在数组已经从小至大依次排序正确的情况下，还进行数组遍历和内循环的两两比较
+        // var arr=new Array(222,12,30,2,1,45,20,0,67,1,99,888);
+        // //控制遍历趟数，3个数遍历3-1=2趟
+        // var num1=0;
+        // var num2=0;
+        // for (var i = 0; i < arr.length-1; i++) {
+        // 	//检测此次遍历整个数组是否从小至大依次排好，如果此次外部循环，未出现一次位置互换，则说明已经排好
+        // 	//用布尔值检测某一次遍历是否交换了位置，不能放在for之外，只能是内部变量，false，没排序好继续循环遍历;true，排序好了break
+        // 	var isChange=true;//假设交换了位置，执行下面的循环
+        //控制两两比较次数
+        //两两开始比较，前一项和后一项比较，较大者向后移动，外循环每进行（遍历）一次，找到最大的一个值。
+        //j< length-1-i说明：每遍历一次结束，下一次遍历，最后的数肯定是最大值，所以最后一次的两两比较是多余的，外循环每进行一次，内循环相应的要减少一次比较；如：[1,5,6,2]第一次遍历，比较3次[1,5,2,6]；第二次遍历，比较2次(1和5，5和2)就够了[1,2,5,6]
+        // 	for (var j = 0; j < arr.length-1-i; j++) {
+        // 		if(arr[j] > arr[j + 1]){
+        // 			isChange=false;
+        // 				//两两比较，交换位置
+        // 			var middle = arr[j];
+        // 			arr[j]=arr[j+1];
+        // 			arr[j+1]=middle;
+        // 		}
+        // 		num1++;//内循环比较次数
+        // 	}
+        // 	num2++;//外部循环遍历次数
+        // 	//循环次数记录结束，再进行是否进行是否排序好的判断
+        // 		if (isChange) {
+        // 			break;//已排序好，跳出循环
+        // 		}
+        // }
+        // console.log(arr);
+        // console.log(num1);
+        // console.log(num2);
+        //
+        // 求字符串数组中每个字符串的长度，存储到新的数组
+        //
+        // var arr= ["aaa","vvvvv","asdsa","rree"];
+        // var newarr = [];
+        // for (var i = 0; i < arr.length; i++) {
+        // 	var length = arr[i].length;
+        // 	newarr[i] = length;
+        // }
+        // console.log(newarr);
+        //
+        // 冒泡排序3.0第二遍
+        // var arr=[1,2,33,6,88,8,7,52,46,99,77];
+        //       var n1=0;
+        //       var n2=0;
+        // for (var i = 0; i < arr.length-1; i++) {
+        // 	var str=true;
+        // 	for (var j = 0; j < arr.length-1-i; j++) {
+        // 		if (arr[j]>arr[j+1]) {
+        // 			str=false;
+        // 			var middle=arr[j];
+        // 			arr[j]=arr[j+1];
+        // 			arr[j+1]=middle;
+        // 		}
+        // 		n1++;
+        // 	}
+        // 	n2++;
+        // 	if (str) {
+        // 		break;
+        // 	}
+        // }
+        // console.log(arr);
+        // console.log(n1);
+        // console.log(n2);
+        //
+        //		var number = 123456;
+        //		var str = "123457";
+        //		console.log(number - str);
+        //用unshift实现数组的翻转
+        /*function Reverse(arr) {
+         var newarr = [];
+         for (var i = 0; i < arr.length; i++) {
+         newarr.unshift(arr[i]);
+         }
+         return newarr;
+         }
+         console.log(Reverse([1,2,3,4,5,6]));*/
+        //        用push实现数组的翻转
+        /*function Reverse(arr) {
+         var newarr = [];
+         for (var i = arr.length - 1; i >= 0; i--) {
+         newarr.push(arr[i]);
+         }
+         return newarr;
+         }*/
+        //        用首尾交换的方式实现数组的翻转
+        //        function Reverse(arr) {
+        //            for (var i = 0; i < arr.length / 2; i++) {
+        //                var temp = arr[i];
+        //                arr[i] = arr[arr.length - 1 - i];
+        //                arr[arr.length - 1 - i] = temp;
+        //            }
+        //            return arr;
+        //        }
+        //        console.log(Reverse([1, 2, 3, 4, 5, 6]));
+        //数组的filter方法，用函数进行判断，删除特定数据
+        //        var arr = [1, 2, 3, 3, 4, 5, 6];
+        //                var newarr = arr.filter(function (element, index, arr) {
+        //                    if (element > 3) {
+        //                        return false;//返回布尔值，false则删除，true则保留数据
+        //                    }
+        //                    return true;
+        //                });
+        //                console.log(newarr);
+        //        var newarr = arr.filter(function (element, index, arr) {
+        //            if (element > 4) {
+        //                return false;
+        //            }
+        //            return true;
+        //        });
+        //        console.log(newarr);
+
+        //        console.log(arr.indexOf(3));//从前往后查找某个数据的第一次出现的位置，获得索引号
+        //        console.log(arr.lastIndexOf(3));//从前往后查找某个数据最后一次出现的位置，获得索引号
+        //dowhile循环封装函数，查找特定数组的特定字符的索引
+        //        function findArr(arr, str) {
+        //            var index = -1;
+        //            do {
+        //                index = arr.indexOf(str, index + 1);
+        //                console.log(index);
+        //                if (index == -1) {
+        //                    break;
+        //                }
+        //            } while (index != -1);
+        //        }
+        //        console.log(findArr(["嘿嘿嘿", "嘿嘿嘿", "嘿嘿嘿", "123", "嘿嘿嘿", "12", "嘿嘿嘿", "嘿嘿嘿"], "123"));
+
+        //数组中每个数出现的次数
+        /*var arr = ["a", "b", "c", "a", "c", "a", "a"];
+         var o = {};//创建一个空对象,存储数组中的值及数组中数出现的次数
+         for (var i = 0; i < arr.length; i++) {
+         //遍历数组，将数组中每个值赋给item，作为空对象的属性，而出现的次数作为属性值，都记录在o对象中
+         var item = arr[i];
+         //o["a"],o["b"],o["c"]就是对象o的属性的调用
+         //如果o{}对象中已存在这个属性true，就将o[item]属性值增加1
+         if (o[item]) {
+         o[item]++;//调用对象属性，并进行运算
+         }
+         else {
+         //如果不存在这个值undefined(false),给对象属性赋值为1
+         o[item] = 1;
+         }
+         }
+         console.log(o);*/
+        //        for (var k in obj)
+        //            console.log(obj[k] + "出现了" + k);
+        /*//字面量创建对象
+         var obj = {
+         name: "mark",
+         age: 18
+         }
+         console.log(obj["age"] + 1);//调用对象属性进行运算操作
+         console.log(obj.name);//mark
+         console.log(obj["name"]);//mark
+         console.log(obj[name]);//undefined*/
+
+        //数组中每个数出现的次数
+        /* function getNumber(arr) {
+         var o = {};
+         for (i = 0; i < arr.length; i++) {
+         var item = arr[i];
+         if (o[item]) {
+         o[item]++;
+         }
+         else {
+         o[item] = 1;
+         }
+         }
+         return o;
+         }
+         console.log(getNumber(["a", "c", "c", "a", "b"]));*/
+        /*var arr = ["a", "c", "c", "a", "b"];
+        function getIndex(arr, str) {
+            var index = -1;
+            do {
+                //从index+1处包括index+1开始查找，查找一次，自增1向后查找
+                index = arr.indexOf(str, index + 1);
+                if (index != -1) {
+                    console.log(index);
+                }
+            } while (index != -1);//找不到则返回-1
+        }
+        console.log(getIndex(arr, "b"));*/
+
+
+        /*var arr=["a", "c", "c", "a", "b"];
+         console.log(arr.push("阿西吧"));
+         //        console.log(arr.pop());
+         //        console.log(arr.shift());
+         console.log(arr.unshift("阿西吧"));
+         console.log(arr); */
+        /*var arr = ["a", "c", "c", "a", "b"];
+         console.log(arr.join("★"));
+         //        console.log(arr.splice(1, 2));//1开始，两个字符
+         console.log(arr.slice(1, 2));//1开始，2结束
+         arr.forEach(function (e) {
+         console.log(e);
+         });*/
+
+        //数组中每个字符出现的次数
+        /* function getNumber(arr) {
+         var o = {};
+         for (var i = 0; i < arr.length; i++) {
+         var item = arr[i];
+         if (o[item]) {
+         o[item]++;
+         }
+         else {
+         o[item] = 1;
+         }
+         }
+         //            return(o);
+         for (var k in o) {
+         console.log(o[k]);
+         }
+         }
+         console.log(getNumber(["a", "c", "c", "a", "b"]));*/
+    </script>
+    <!--获得数组特定字符的索引-->
+    <!--<script type="text/javascript">
+        function getIndex(arr, str) {
+            var index = -1;
+            do {
+                index = arr.indexOf(str, index + 1);
+                if (index != -1) {
+                    return index;
+                }
+            }while (index != -1);
+        }
+    </script>-->
+    <script type="text/javascript">
+        str = "fjfjsdfjsdjfsjlwekfw";
+        str.split('');
+        console.log(str.split(''));
+        str.substr(3, 5);
+        console.log(str.substr(3, 5));
+        var day = new Date();
+        console.log(day.toLocaleString());//2017/4/11 上午8:56:58
+        console.log(day.toLocaleTimeString());//上午9:05:44
+        console.log(day.toTimeString());//09:05:44 GMT+0800 (中国标准时间)
+
+        // 数组去重
+        function removeSame(arr) {
+            var temp = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (temp.indexOf(arr[i]) == -1) {
+                    temp.push(arr[i]);
+                }
+            }
+            return temp;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

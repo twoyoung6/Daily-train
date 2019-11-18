@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        //
+        /**
+         * n-m所有数的乘积
+         * @param  {[type]} n [description]
+         * @param  {[type]} m [description]
+         * @return {[type]} number [description]
+         */
+        // function ji(n,m){
+        // 	var ji=1;
+        // 	for (var i = n; i <= m; i++) {
+        // 		ji=ji*i;
+        // 	}
+        // 	return ji;//返回值，返回计算结果，结束function，后续的代码不会执行
+        // }
+        // console.log(ji(5,6));//直接输出函数值
+
+
+        //
+        /**
+         * 求圆的面积
+         * @returns {number} [r 圆的半径]
+         */
+        // function circle(r){
+        // 	ji = Math.PI*Math.pow(r,2);
+        // 	return ji;
+        // }
+        // console.log(circle(2));
+        //
+        /**
+         * 求三个数中的最大值
+         * @param  {[type]} a [description]
+         * @param  {[type]} b [description]
+         * @param  {[type]} c [description]
+         * @return {[type]} number [description]
+         */
+        // 	function max(a,b,c){
+        // 		if (a>b) {
+        // 			if(a>c){
+        // 				var max=a;
+        // 			}
+        // 			else {
+        // 				var max=c;
+        // 			}
+        // 		}
+        // 		else if(b>c){
+        // 			var max=b;
+        // 		}else{
+        // 			var max=c;
+        // 		}
+
+        // 	return max;
+        // }
+        // console.log(max(2,55,84));
+
+        /**
+         * 三元运算符写求三个数中的最大值
+         */
+        // function getMax(a,b,c){
+        // 	return (a>b ? a:b)>c ? (a>b ? a:b):c;
+        // }
+        // console.log(getMax(12,3,2));
+        /**
+         * 求一组数中的最大值和最小值
+         * @type {Array}
+         */
+        // function getM(arr){
+        // 	//判断数组是否为空
+        // 	arr = arr || [];//如果不为空则返回arr本身，否则默认返回空数组[]
+        // 	if (arr.length==0){
+        // 		return;//如果为空数组则返回
+        // 	}
+        // 	var max=arr[0];
+        // 	// var min=arr[0];
+        // 	for (var i = 1; i < arr.length; i++) {
+        // 	max = max < arr[i]? arr[i]:max;
+        // 	// min = min >arr[i]? arr[i]:min;
+        // }
+        // return max;
+        // }
+        // console.log(getM([1,3,2,54,10]));
+        //
+        /**
+         * 翻转数组
+         * @param  {[type]} Arr [description]
+         * @return {[type]} Number [description]
+         */
+        // function change(arr){
+        // 	arr = arr || [];
+        // 	var newarr=[];
+        // 	//倒着遍历数组即可
+        // 	for (var i = arr.length-1; i >=0; i--) {
+        // 		newarr[newarr.length] = arr[i];
+        // 	}
+        // 	return newarr;
+        // }
+        // console.log(change([1,2,3,5,4,62]));
+        //
+        //
+        /**
+         * 对数组排序从小到大，冒泡排序
+         * @param  {[type]} arr [description]
+         * @return {[type]} arr   [description]
+         */
+        // function sort(arr){
+        // 	arr = arr || [];
+        // 	for (var i = 0; i < arr.length-1; i++) {
+        // 		var isok=true;//假设有数进行了位置互换
+        // 		for (var j = 0; j < arr.length-1-i; j++) {
+        // 			if (arr[j]>arr[j+1]) {
+        // 				var str=arr[j];
+        // 				arr[j]=arr[j+1];
+        // 				arr[j+1]=str;
+        // 				isok = false;
+        // 			}
+        // 		}
+        // 		if (isok) {
+        // 			break;
+        // 		}
+        // 		}
+        // 	//返回值
+        // 	return arr;
+        // }
+        // var arr=[12,33,45,6,0,25,8,45,2];
+        // console.log(sort(arr));
+
+        //理解变量作用域的几个小题
+        //	1.0
+        //  function fun(){
+        // 	var num;
+
+        // 	console.log(num);//undefined
+
+        // 	num = 20;
+        // }
+        // num = 10;
+        // fun();
+        // //	2.0
+        // 	var a =18;
+        // 	f1();
+        // 	function f1(){
+        // 	var b=9;
+        // 	console.log(a);//undefined
+        // 	console.log(b);//9
+        // 	var a = '123';
+        // }
+        // //
+        // // 3.0
+        // 	// f1();
+        // 	console.log(c);//9
+        // 	console.log(b);//9
+        // 	console.log(a);//is no define
+        // 	function f1(){
+        // 		var a = b = c = 9;
+        // 		console.log(a);//9
+        // 		console.log(b);//9
+        // 		console.log(c);//9
+        // 	}
+        // 	预解析之后的f1函数
+        // 	function f1(){
+        // 	//找到function,var;将var a;a申明提前，等号右侧不提前，a为局部变量；
+        // 	b,c为全局变量
+        // 		var a;
+        // 		b=c=9;
+        // 		console.log(a);
+        // 		console.log(b);
+        // 		console.log(c);
+        //}
+        //
+        //
+        //判断一个数是否是一个素数，返回一个布尔值，而不是一个数
+        //和所有比他小的数相除，都不能被整除就是素数
+        //i=2;i<Math.pow(m,1/2);i++
+        /**
+         * [isprime description]
+         * @param  {[type]} m [description]
+         * @return {[type]}   [description]
+         */
+        // function isprime(m){
+        // 	var str = Math.sqrt(m);//Math.pow(m,1/2)
+        // 	var isprime = true;//假设m是一个素数，给定一个初始布尔值
+        // 	var m;
+        // 	for (var i = 2; i < str; i++) {
+        // 		if (m%i === 0) {
+        // 			isprime = false;
+        // 		}
+        // 	}
+        // 	//返回布尔值，是否为素数
+        // 	return isprime;
+        // }
+        // console.log(isprime(13));
+        //
+        //
+        /**
+         * 求阶乘facto
+         * @param  {[type]} n [description]
+         * @return {[type]} number  [description]
+         */
+        //        function facto(n) {
+        //            var facto = 1;
+        //            for (var i = 2; i <= n; i++) {
+        //                facto = facto * i;
+        //            }
+        //            return facto;
+        //        }
+        //        console.log(facto(3));
+        // //
+        // // 求n的阶乘的和
+        // function factosum(n){
+        // 	var sum=0;
+        // 	for (var i = 1; i <= n; i++) {
+        // 		sum = sum + facto(i);//调用上面的求阶乘的函数facto(n)
+        // 	}
+        // 	return sum;
+        // }
+        // console.log(factosum(4));
+        /**
+         * [rabit description]
+         * @param  {[type]} n [description]
+         * @return {[type]}   [description]
+         */
+        // function rabit(n){
+        // 	var a=1;
+        // 	var b=1;
+        // 	for (var i = 3; i <= n; i++){
+        // 		var sum=a+b;
+        // 		var a=b;//连着的数互换位置
+        // 		var b=sum;//两者之和为新产生的第i个数
+        // 	}
+        // 	return sum;
+        // }
+        // console.log(rabit(5));
+        //
+        //
+        //
+        //
+        // n-m的乘积
+        // function ji(n,m){
+        // 	var n,m;
+        // 	var ji=1;
+        // 	for (var i = n; i <= m; i++) {
+        // 		var ji=ji*i;
+        // 	}
+        // 	return ji;
+        // }
+        // console.log(ji(1,4));
+        //
+        // 三元运算符写三个数中的最大值
+        //
+
+        // function max(a,b,c) {//形参
+        // 	var a,b,c;
+        // 	return ((a>b?a:b)>c?(a>b?a:b):c);
+        // }
+        // console.log(max(3,22,0));//实参
+        //
+        //
+        // 找数组中最大值和最小值
+        //
+        // 1.0判断是否为空数组
+        //  2.0前后相邻数比较，循环
+        //
+        // function Max(arr){
+        // 	var max=arr[0];
+        //  var arr = arr || [];//判断数组是否为空
+        // 		for (var i = 0; i < arr.length-1; i++) {
+        // 		max = max > arr [i+1] ? max : arr[i+1];
+        // 	}
+        // 	return max;
+        // }
+        // console.log(Max([1,2,30,4,45]));
+        //
+        // 翻转数组
+        // 反向遍历
+
+        // function changearr(arr){
+        //  var newarr = [];
+        //  var arr = arr || [];//判断数组为空
+        // 	for (var i = arr.length-1; i >=0; i--) {
+        // 		newarr[newarr.length]=arr[i];
+        // 	}
+        // 	return newarr;
+        // }
+        // console.log(changearr([1,20,33,54,21,0,2,14,37]));
+        //
+        //冒泡排序第5遍
+        // function number(arr){
+        // 	var arr = arr || [];
+        // 	//i控制外循环，遍历数组的趟数
+        // 	for (var i = 0; i < arr.length-1; i++) {
+        // 		var isOk = true;
+        // 		//j 控制内循环，数组两两比较
+        // 		for (var j = 0; j < arr.length-1-i; j++) {
+        // 			if (arr[j] > arr[j+1]){
+        // 				max = arr[j];
+        // 				arr[j] = arr[j+1];
+        // 				arr[j+1] = max;
+        // 				isOk = false;
+        // 			}
+        // 		}
+        // 		if(isOk){
+        // 		break;
+        // 		}
+        // 	}
+        // 	return arr;
+        // }
+        // var arr = [2,3,4,6,54,12,0];
+        // console.log(number(arr));
+        //
+        //
+        // 冒泡排序第六遍
+        // function sort(arr){
+        // 	arr = arr || [];
+        // 	for (var i = 0; i < arr.length-1; i++) {
+        // 		isok=true;
+        // 		for (var j = 0; j < arr.length-1-i; j++) {
+        // 			if (arr[j] > arr[j+1]){
+        // 				max = arr[j];
+        // 				arr[j] = arr[j+1];
+        // 				arr[j+1] = max;
+        // 				isok=false;
+        // 			}
+        // 		}
+        // 		if (isok){
+        // 			break;
+        // 		}
+        // 	}
+        // 	return arr;
+        // }
+        // console.log(sort([1,45,0,1,4,8,9,85]));
+        //
+        //
+        // 判断一个数是否是素数
+        // function isPrime(m){
+        // 	var sqrt = Math.sqrt(m);
+        // 	var isprime = true;
+        // 	for (var i = 2; i < sqrt; i++) {
+        // 		if (m%i===0){
+        // 			isprime = false;
+        // 		}
+        // 	}
+        // 	return isprime;
+        // }
+        // console.log(isPrime(21));
+        //
+        //
+        /**
+         * 求n的阶乘之和
+         * @param  {[type]} n [description]
+         * @return {[type]} number  [description]
+         */
+        // function facto(n){
+        // 	var facto = 1;
+        // 	for (var i = 2; i <= n; i++) {
+        // 		facto = facto * i;
+        // 	}
+        // 	return facto;
+        // }
+        // function sumfacto(n){
+        // 	var sum = 0;
+        // 	for (var i = 1; i <= n; i++) {
+        // 	     sum = sum +facto(i);
+        // 	}
+        // 	return sum;
+        // }
+        // console.log (sumfacto(4));
+        //
+        //
+        /**
+         * 判断一个数是否是素数
+         * @param  {[type]}  m [description]
+         * @return {Boolean} boolean   [description]
+         */
+        // function isPrime(m){
+        // 	var isprime = true;
+        // 	var str = Math.sqrt(m);
+        // 	for (var i = 2; i < str; i++) {
+        // 		if(m%i == 0){
+        // 			isprime = false;
+        // 			break;
+        // 		}
+        // 	}
+        // 	return isprime;
+        // }
+        // console.log(isPrime(0));
+        //
+        //
+        // 输入某年某月某日   判断这一天是这一年的第几天
+        // 2014.6.4
+        // 将每个月的天数放到一个数组中，判断月份，用索引调用数组，累加之前月的天数，再加上当月天数
+        // 如果是1月份的话，直接返回日的数值
+        // 判断闰年，2月份28，29天，大于2月，最后的days加1，能被4整除，不能被100整除的整数，或者被400整除
+        //  function getday(year,month,days){
+        //  	var days;
+        //  	if (month == 1) {
+        //  		return days;
+        //  	}
+        //  	var arr = [31,28,31,30,31,30,31,30,31,30,31,30];
+        //  		for (var i = 0; i < month - 1; i++) {//循环至当前月的下一个月即可
+        //  			var days = days + arr[i];
+        // 	}
+        // 	if (month > 2 && isrun(year)){
+        // 		days = days + 1;
+        // 	}
+        //  	return days;//返回number值
+        //  }
+        //  function isrun(year){
+        //  	if ((year % 4=== 0 && year % 100!==0) || year % 400 ===0){
+        //  		return true//返回布尔值
+        //  	}
+        //  	return false;
+        //  }
+
+        // console.log(getday(2017,4,8));
+
+        //        自定义构造函数，批量创建对象
+        /*function Hero(name, level, skill) {
+            this.name = name;
+            this.level = level;
+            this.skill = skill;
+            //对象方法
+            this.move=function (){
+                console.log(this.name + "向右移动，使用" + this.skill + "攻击");
+            }
+        }
+        var hero1= new Hero("假面骑士",51,"无敌风火轮");
+        console.log(hero1);
+        console.log(hero1.move());*/
+        var day = new Date();
+        var day1 = +new Date();
+        var day2 = new Date().valueOf();
+        console.log(day + '</br>' + day1 + '</br>' + day2);
+    </script>
+    <!--JQ全选反选函数初步封装-->
+    <script>
+        // 判断对象是对象还是数组类
+        function isArrayLike(array) {
+
+            var length = array && array.length;
+
+            return typeof length === 'number' && length >= 0;
+
+        }
+        // each封装
+        function each(array, callback) {
+            var i, k;
+            if (isArrayLike(array)) {
+                // 使用 for 循环
+                for (i = 0; i < array.length; i++) {
+                    if (callback.call(array[i], i, array[i]) === false) break;
+                }
+            } else {
+                // 使用 for-in 循环
+                for (k in array) {
+                    if (callback.call(array[i], k, array[k]) === false) break;
+                }
+            }
+            return array;
+        }
+        // JQ顶级对象 $ 的封装
+        function itcast(selector) {
+            var arr = {};
+            var list = document.querySelectorAll(selector);
+            [].push.apply(arr, list);
+            arr.each = function (fn) {
+                each(arr, fn);
+            };
+            return arr;
+        }
+
+        // 考察作用域，数据类型
+        function Foo() {
+            var i = 0;
+            return function () {
+                console.log(i++);
+            }
+        }
+        var f1 = Foo(), f2 = Foo();
+        f1();//0
+        f1();//1
+        f2();//0
+        // console.log(i);//error,i is not defined
+    </script>
+    <script>
+        // function foo() {
+        //     var num = 123;
+        //     return function () {
+        //         return num;
+        //     }
+        // }
+        // console.log(foo()());
+        function foo(){
+            var num = 345;
+            function func(){
+                return num;
+            }
+            return func;
+        }
+        var f = foo();//带有私有数据的函数
+        console.log(f());
+    </script>
+</head>
+
+<body>
+    <!--<form>-->
+    <!--<input id="num1" type="text"/>-->
+    <!--<select id="type">-->
+    <!--<option value="+">+</option>-->
+    <!--<option value="-">-</option>-->
+    <!--<option value="*">*</option>-->
+    <!--<option value="/">/</option>-->
+    <!--</select>-->
+    <!--<input id="num2" type="text"/>-->
+    <!--<input type="button" onclick="Plate(5,6)" value="="/>-->
+    <!--</form>-->
+</body>
+
+</html>

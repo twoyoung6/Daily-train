@@ -1,0 +1,172 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>下拉菜单</title>
+<meta name="Keywords" content=""/>
+<meta name="Description" content="" />
+<link href="favicon.ico" type="image/x-icon" rel="icon" />
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<style>
+a{font-family:微软雅黑;font-size:  18px;color: #fff;text-decoration: none;text-align: center;}
+.h{font-family:微软雅黑;font-size:  28px;color: #333;text-decoration: none;text-align: center;margin-top: 70px;}
+#menu {position: absolute;text-decoration: none;background-color: #ff7f5f;margin:40px auto;font-family:微软雅黑;font-size:  14px;color:  #2e334b;
+      visibility: hidden;width: auto;}
+#menu2{position: absolute;text-decoration: none;background-color:#2e334b;margin-top:40px;font-family:微软雅黑;font-size:  14px;color:  #fff;
+visibility: hidden;width: auto;}
+td {width: 120px;height: 40px;line-height: 20px;left: 35px;border: 2px  solid #ff7f5f;text-align: center;}
+.blogmood{width: 330px;margin: 15px auto;background-color: #333;}
+.blogmood img{width: 100px;height: 100px;margin-left: 10px;}
+#div2{width: 600px;margin:10px auto;background-color: #fff;color: #666;border: 1px dashed #ff5f2f;}
+.area{margin: 0 auto;font-family:微软雅黑;font-size:16px;width: 600px;}
+.area textarea{outline: none;color:#666;font-family:微软雅黑;font-size:14px;}
+.area label{margin:15px auto;display: block;}
+.area input{margin:5px auto;outline: none;}
+.textjs{width: 240px;margin: 40px auto;}
+.textjs img{width: 200px;margin: 10px -120px}
+.shop{color:#ff0022;display: block;text-align:center;position: relative;}
+.shop a{width: 150px;font-family:微软雅黑;font-size: 16px;text-decoration: underline;z-index: 1;background-color: #333;color:#fff; position: absolute;margin: 180px 50px;}
+.shop a:hover{color: #ff0022;background-color: #ededed;}
+#hiddentxt{width: 120px;text-align: left;font-size: 14px;font-family: microsoft yahei;background-color: #ff0022;color:#fff ;display:none;position: absolute;margin:130px 240px}
+</style>
+<!--Z索引，动态定位-->
+<script type="text/javascript">
+      function showMenu(id){
+            var str=document.getElementById(id);
+            str.style.visibility="visible";
+      }
+      function hiddenMenu(id){
+            var demo=document.getElementById(id);
+            demo.style.visibility="hidden";
+      }
+      //visibility属性显示提示框
+/*display:none隐藏 begin*/
+            var div;//被视为全局元素
+            window.onload=init;//页面加载及运行
+            function init(){
+            div=document.getElementById("hiddentxt");
+            }
+       function showtxt(e){       
+            if (e.type=="mouseover"){//如果事件是鼠标移动到链接上引起mouseover事件，则提示框可见
+
+                  div.style.display="block";//另一种显示/隐藏的用法display:none/block,区别于visibility
+            }
+            else if(e.type=="mouseout")
+            {
+                  div.style.display="none";
+            }
+      }
+</script>
+<!--创建博客JS-->
+<script type="text/javascript">
+function blogEnter(){
+      var date;  //属性
+      var message;
+      var name;
+      this.setDate=setDate;    //方法
+      this.setBloger=setBloger;  
+      this.setMessage=setMessage;
+      this.showBlog=showBlog;
+
+function setDate(){
+      var d=new Date();//获取当日日期
+      var year=d.getFullYear();
+      var month=d.getMonth();
+      var day=d.getDate();
+      date=month+"/"+day+"/"+year;    //月/日/年
+}
+function setBloger(nameVal){
+      var name=nameVal;//作者
+}
+function setMessage(messageVal){
+      var message=messageVal;//博文
+}
+/*关键部分，创建博客Html*/
+function showBlog(){
+      var para=document.createElement("p");
+      var count=document.getElementByTagName("p").length;
+      //获取段落号
+      para.setAttribute("id","para"+count);   //为p设置ID属性
+      var br=document.createElement("br");
+      var bold=document.createElement("b");
+      var divObj=document.getElementById("div2");
+      //获取div引用
+      divObj.appendChild(para);   ///创建节点s
+      
+      var txt1=document.createTextNode("Write By"+name+"on");
+      var txt2=document.createTextNode(date);
+      var txt3=document.createTextNode(message);
+
+      para.appendChild(txt1);
+      //将文本的下一行追加到br、B元素之后
+      para.appendChild(txt2);
+      bold.appendChild(br);
+      para.appendChild(bold);
+      bold.appendChild(txt3)
+      para.appendChild(bold);
+}
+}//类结束
+function addBlog(){
+      message=document.getElementById("blogVal").value;
+      bloggername=document.getElementById("name").value;
+      if (message==null){
+            alert("你还没有撰写内容哦！");
+      }
+      else{
+      var blog=new blogEnter();   //创建新的博客对象，调用blogEnter()函数
+      blog.setMessage(message);   //调用对象方法
+      blog.setBloger(bloggername);
+      bolg.setDate();
+      blog.showBlog();
+      }
+      }
+      
+}
+</script>
+
+</head>
+
+<body>
+<h1>官网：下拉菜单</h1>
+<div align="center">
+<table>
+      <tr>
+            <td><div id="menu" onmousedown="hiddenMenu('menu');">
+                  <a href="#" class="menu">shots</a><br/>
+                  <a href="#" class="menu">book</a><br/>
+                  <a href="#" class="menu">music</a><br/>
+            </div>
+             <div> <a href="#" onMouseOver="showMenu('menu');"  class="H">product</a></div>  
+            </td>
+            <td><div id="menu2" onClick="hiddenMenu('menu2');" >
+                  <a href="#" class="menu">address</a><br/>
+                  <a href="#" class="menu">phone</a><br/>
+                  <a href="#" class="menu">Introduction</a><br/>
+            </div>
+                  <a href="#" onMouseOver="showMenu('menu2');"  class="H">about</a>
+            </td>
+      </tr>
+</table>
+</div>
+<div class="h">今天的心情？</div>
+  <div class="blogmood"><img src="images/biaoqing (1).jpg"><img src="images/biaoqing (3).jpg"><img src="images/biaoqing8.jpg"></div>
+  <!--博客内容-->
+<div id="div2"></div>
+  <!--隐藏文本-->
+<div class="textjs">
+      <div id="hiddentxt">准备好姿势了吗？买买买！！！</div>
+            <div  class="shop"><a href="#" onMouseOut="showtxt(event);" onMouseOver="showtxt(event);">剁手啦剁手啦！！！</a> <img src="images/biaoqing (6).jpg"></div>
+</div>
+<div class="area">
+      <form method="post">
+            <label>撰写博客：<br/><textarea id="blogVal" name="text" rows="8" cols="80" onfocus="this.value=''"></textarea></label>
+            <label>输入你的名字：<input type="text" name="text" id="name"></label> 
+            <label><input type="button" value="完成撰写" onclick="addBlog();"></label>   
+      </form> 
+</div>
+<div class="father">
+      <div class="son">我是标签</div>
+      <div class="son1">我是盒子</div>
+</div>
+
+</body>
+</html>

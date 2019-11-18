@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #70a114;
+            position: absolute;
+
+        }
+
+        #btn {
+            display: block;
+            width: 200px;
+            height: 100px;
+        }
+
+        #btn li {
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: #70a114;
+            border: 1px solid #70a114;
+            border-radius: 50%;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<ul id="btn">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<div class="box" id="box"></div>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var lis = btn.getElementsByTagName("li");
+    for (i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+            Move(box, i * 200)
+        }
+    }
+    function Move(obj, target) {
+        clearInterval(obj.time);
+//        js动态创建移动对像属性
+        obj.time = setInterval(function () {
+            var step = 10;
+            var leader = obj.offsetLeft;
+            step = leader < target ? step : -step;
+            if (Math.abs(leader - target) >= Math.abs(step)) {
+                //左右移动
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            }
+//            判断最后一步是否到达
+            else {
+                //手动到达目的地
+                obj.style.left = target + "px";
+                clearInterval(obj.time);
+            }
+        }, 15)
+    }
+</script>
+</body>
+</html>

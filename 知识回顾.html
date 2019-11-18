@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<br>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="tools/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        body {
+            font-size: 16px;
+        }
+
+        .w {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .jiao {
+            width: 20px;
+            height: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .jiao i {
+            width: 20px;
+            height: 20px;
+            line-height: 7px;
+            font-style: normal;
+            position: absolute;
+            top: -3px;
+            font: 20px/7px "simsun";
+            color: #ff8140;
+        }
+
+        .father {
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid #000021;
+            overflow: hidden;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #ff7f5f;
+            float: left;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #161d20;
+            float: left;
+        }
+
+        .box3 {
+            background-color: #1fa8e5;
+            overflow: hidden;
+        }
+
+        .li {
+            width: 60px;
+            height: 100px;
+            text-align: center;
+            list-style: none;
+            border: 1px solid #1fa8e5;
+        }
+
+        .li a {
+            padding-top: 70px;
+            width: 60px;
+            height: 26px;
+            display: block;
+            position: relative;
+        }
+
+        .li i {
+            background: url("images/04.jpg") center center;
+            width: 60px;
+            height: 60px;
+            display: block;
+            position: absolute;
+            top: 10px;
+        }
+
+        .demo {
+            background: #1b72be;
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+            margin: 50px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .demo:hover {
+            transition: all .6s;
+            transform: skew(0deg, -1deg) rotate(180deg);
+            box-shadow: 1px 1px 6px 2px #999;
+        }
+
+        .demo1 {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #007AFF;
+            background: #d6131a;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            margin-left: 2px;
+        }
+
+        .demo1:hover {
+            border-radius: 100%;
+            transition: all 2s;
+            transform: rotate(-360deg);
+        }
+    </style>
+</head>
+<br>
+<!--倒三角-->
+1.0 倒三角
+<div class="jiao w"><i>◇</i></div>
+
+2.0 BFC
+<div class="father w">
+    <div class="box1"></div>
+    <div class="box2"></div>
+</div>
+
+3.0 BFC 应用：右侧高宽自适应盒子，一般用于移动端开发
+<div class="father w">
+    <div class="box1" id="box1"></div>
+    <div class="box3" id="box3">
+        自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容自适应内容
+    </div>
+</div>
+
+4.0 a标签中的文本和背景图如何水平垂直都居中对齐,其中一个元素是图片,图片位于上面，这样的好处是让整个区域都有超链接的效果
+<li class="li w">
+    <a href="javascript:void(0)">呵呵<i></i></a>
+</li>
+
+5.0 字符串或者数组中每项出现的次数
+<div id="txt"></div>
+<script type="text/javascript">
+    var str = "自应内容自应内容自适应应内容自适应内";
+    var o = {};
+    for (i = 0; i < str.length; i++) {
+        var item = str[i];
+        if (o[item]) {
+            o[item]++;
+        } else {
+            o[item] = 1;
+        }
+    }
+    for (var k in o) {
+        console.log(k + "出现了" + o[k] + "次");
+    }
+
+</script>
+<script type="text/javascript">
+    var txt = document.getElementById("txt");
+    txt.innerHTML = 'var o = {};' +
+        'for (i = 0; i < str.length; i++) {' +
+        'var item = str[i];' +
+        'if (o[item]) {' +
+        'o[item]++;' +
+        '}' +
+        'o[item] = 1;' +
+        '}' +
+        'for (var k in o) {' +
+        'console.log(k + "出现了" + o[k] + "次");' +
+        '}';
+
+</script>
+
+6.0 filter 方法，删除特定数据，newarr = arr.filter(function (ele, index, arr) {}
+<script type="text/javascript">
+    var arr = ['cjskjc', 123, 'hh', '哈哈', 546, 888, '54545'];
+    var newarr = [];
+    //    需要有一个新数组接收过滤之后的数组
+    newarr = arr.filter(function (ele, index, arr) {
+        if (isNaN(ele)) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+    console.log(newarr);
+
+</script>
+
+</br>
+7.0 查找数组中特定字符的所有索引: var index = -1; do { index = arr.indexOf("cc", index + 1); if (index != -1) { console.log(index); } }
+while (index != -1);
+<script type="text/javascript">
+    var arr = ["cc", "asas", "15456", "cc"];
+    var index = -1;
+    do {
+        index = arr.indexOf("cc", index + 1);
+        if (index != -1) {
+            console.log(index);
+        }
+    } while (index != -1);
+
+</script>
+</br>
+8.0 obj.className.replace(old,new);替换类名
+<input type="button" value="替换类名" id="btn">
+<script type="text/javascript">
+    var btn = document.getElementById("btn");
+    var box1 = document.getElementById("box1");
+    btn.onclick = function () {
+        if (box1.className == "box1") {
+            box1.className = box1.className.replace("box1", "box3");
+        } else {
+            box1.className = "box1";
+        }
+    }
+
+</script>
+</br>
+9.0 JS中的基本数据类型的比较
+</br>1、如果两个操作值都是数值，则进行数值比较 ;
+</br>2、如果两个操作值都是字符串，则比较字符串对应的字符编码值;console.log("a"
+< "b");//true </br>3、如果只有一个操作值是数值，则将另一个操作值转换为数值，进行数值比较;console.log("a" > 0);//false
+    </br>4、如果一个操作数是对象，则调用valueOf()方法（如果对象没有valueOf()方法则调用toString()方法），得到的结果按照前面的规则执行比较 ;
+    </br>5、如果一个操作值是布尔值，则将其转换为数值，再进行比较。所以，这里首先通过Number()转换为数字然后进行比较，true会转换成1，而false转换成0，就变成了[1
+    < 3, 0 < 1]; <script type="text/javascript">
+        console.log("c" > "abx");//true console.log(2 > "cas");//false
+        </script>
+        </br>
+        10.间歇定时器，倒计时跳转
+        <a href="#" id="a">链接将在<span id="span">3</span>秒后自动跳转</a>
+        <script type="text/javascript">
+            var sec = document.getElementById("span");
+            var a = document.getElementById("a");
+            var num = parseInt(sec.innerText);
+            setInterval(function () {
+                if (num > 0) {
+                    num--;
+                    sec.innerHTML = num;
+                } else {
+                    a.style.color = "#ff7f5f";
+                }
+            }, 1000)
+        </script>
+        </br>
+        11. this 的指向问题
+        <script type="text/javascript">
+            function fn() {
+                console.log(this.b); //全局
+            }
+            var obj = {
+                b: 2,
+                fn: fn
+            };
+            var bar = obj.fn;
+            var b = "全局";
+            bar();
+        </script>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <script type="text/javascript">
+            var lis = document.getElementsByTagName("li");
+            for (i = 0; i < lis.length; i++) {
+                if (i % 2 == 0) {
+                    lis[i].style.backgroundColor = "blue";
+                } else {
+                    lis[i].style.backgroundColor = "red";
+                }
+            }
+        </script>
+
+        <div class="demo" id="demo" style="left:20px">
+            <div class="demo1" id="demo1" style="left: 20px"></div>
+        </div>
+        <script type="text/javascript">
+            /*function getNum() {
+     //书写一个函数，打印出来书写次数最多的字符
+     var str = "书写一个函数数数数数数数打印出来书写次数最多的字符";
+     var o = {};
+     //    先计算每个字符出现的次数
+     for (i = 0; i < str.length; i++) {
+     var item = str[i];//每一项赋值给item
+     if (o[item]) {
+     o[item]++;
+     } else {
+     o[item] = 1;
+     }
+     }
+     //    找到次数最多的字符并输出
+     var max = o["书"];
+     for (var k in o) {
+     if (o[k] > max) {
+     max = o[k];
+     var i = k;//记录当前键值最大的键
+     }
+     }
+     console.log(i);//数
+     }
+     getNum();
+
+     //    简单的回调函数的模型示例
+     function f1(fn) {
+     fn();
+     }
+     function f2() {
+     console.log("我是无辜的！");
+     }
+     f1(f2);
+     //    冒泡排序最终版函数
+     function sort(arr) {
+     var isOk = true;
+     for (i = 0; i < arr.length; i++) {
+     for (j = 0; j < arr.length - 1 - i; j++) {
+     //两两比较
+     if (arr[j] > arr[j + 1]) {
+     //两两交换
+     var item = arr[j];
+     arr[j] = arr[j + 1];
+     arr[j + 1] = item;
+     isOk = false;
+     }
+     }
+     if (isOk) {
+     return;
+     }
+     }
+     console.log(arr);
+     }
+     sort([6, 2, 0, 2, 1, 4]);
+
+     //    简单的递归函数，斐波那契数列第N项
+     var i = 0;
+     function fn() {
+     if (i < 10) {
+     console.log("哈哈哈");
+     i++;
+     fn();
+     }
+     }
+     fn();
+
+     console.log(parseInt("10", 2));//2
+     console.log(a1 = a = 1 ? 1 : 0);//a1=1,输出1*/
+            var demo = document.getElementById("demo");
+            var demo1 = document.getElementById("demo1");
+            /*console.log(demo.offsetHeight);//height+border+margin=302
+             console.log(demo.styleHeight);//
+             console.log(demo.style.left);
+             console.log(demo.offsetLeft);//style.left+marginleft=58*/
+
+            console.log(demo1.offsetHeight); //height+border+margin=100
+            console.log(demo1.styleHeight); //
+            console.log(demo1.style.left); //只能获取行内样式  20px
+            console.log(demo1.offsetLeft); //style.left+marginleft=58
+        </script>
+        12.函数 知识回顾
+        <script type="text/javascript">
+            function f1(a, b, fn) {
+                return fn(a, b);
+            }
+            var f2 = function (a, b) {
+                return a * b;
+            }
+            var result = f1(20, 3, f2);
+            console.log(result);
+            var i = 0;
+
+            function f4() {
+                console.log("哈哈");
+                i++;
+                if (i < 10) {
+                    f4();
+                }
+            }
+            f4();
+            //    1-n的和递归
+            // 1+2+3
+            function sum(n) {
+                if (n == 1) {
+                    return 1;
+                }
+                return sum(n - 1) + n;
+            }
+            //递归求一个数每位数上的和
+            //    个位数:123%10 3
+            //    十位数: 123/10%10 2
+            //    百位数:123/10/10%10 1;
+            //    n%10 + sum(n/10);
+            function sum(n) {
+                if (n / 10 == 0) {
+                    return n;
+                }
+                return n % 10 + sum(parseInt(n / 10));
+            }
+            //斐波那契数列第N项递归
+            function feibo(n) {
+                if (n == 1 || n == 2) {
+                    return 1;
+                }
+                return feibo(n - 1) + feibo(n - 2);
+            }
+            var h = [1, 2, 3],
+                j = [1, 2, 3],
+                v = [1, 2, 5];
+            console.log(h == j); //false
+            console.log(h < v); //true
+        </script>
+        <script type="text/javascript">
+            //			$('.demo').append('<p>哈哈</p>');
+            //			$('.demo').append('<h1>哈哈</h1>');
+
+            //			$('.demo').prepend('<p>哈哈</p>');
+            $('<p>哈哈</p>').appendTo(".demo");
+        </script>
+        <script>
+            var foo = { n: 1 };
+            (function (a) {
+                console.log(a.n); // 1
+                a.n = 3;
+                var foo = { n: 2 };
+                console.log(foo.n); // 2
+            })(foo);
+            console.log(foo.n); // 3
+        </script>
+        <!--工厂模式创建对象-->
+        <script>
+            function hero(name, sex, level, skill) {
+                var hero = {};
+                hero.name = name;
+                hero.sex = sex;
+                hero.level = level;
+                hero.skill = skill;
+                hero.attack = function () {
+                    console.log("用" + skill + "攻击敌方");
+                }
+                // 工厂模式记得一定要返回对象
+                return hero;
+            }
+            var hero1 = new hero("yang", "man", 90, "无敌萌萌拳");
+            console.log(hero1);
+            hero1.attack();
+        </script>
+        <!--构造函数创建对象-->
+        <script>
+            function hero(name, sex, skill) {
+                this.name = name;
+                this.sex = sex;
+                this.skill = skill;
+                this.attack = function () {
+                    console.log("用" + skill + "攻击敌方");
+                }
+                //        不需要返回对象了
+            }
+            var hero2 = new hero("mu", "female", "排山倒海");
+            console.log(hero2);
+            var arr = ["scascas", 123, 456];
+            console.log(arr.toString());// tostring 将数组转换成字符串 用逗号隔开scascas,123,456
+            console.log(arr.join(""));// 拼接成字符串  scascas123456
+            console.log(arr.valueOf());
+
+            var str = "fj sjj scj jas jca s cjasa skjh";
+            var newstr = str.split(" ");
+            var newarr = newstr.join("");
+            console.log(newstr);
+            console.log(newarr);
+        </script>
+        <!--forEach遍历-->
+        <script type="text/javascript">
+            var words = ["one", "two", "three", "four"];
+            words.forEach(function (word) {
+                console.log(word);
+                if (word === "two") {
+                    words.shift();
+                }
+            });
+    // one
+    // two
+    // four
+        </script>
+        <script>
+            var arr = [2, 2, 3];
+            var result = arr.reduce(function (a, b) { return a + b });
+            var result1 = arr.reduce(function (a, b) { return a * b });
+            console.log(result);
+            console.log(result1);
+        </script>
+
+        文件上传
+        <input type='file' accept="image/*" multiple>
+        <!--写一个函数可以克隆js的所有数据类型-->
+        <script>
+            function Clone(obj) {
+                var o, type = typeof obj;
+                switch (type) {
+                    case 'undefined':
+                        break;
+                    case 'Number':
+                        o = obj - 0;
+                        break;
+                    case 'string':
+                        o = obj + '';
+                        break;
+                    case 'Boolean':
+                        o = obj;
+                        break;
+                    case 'obj':
+                        if (Object.prototype.toString.call(obj) === 'Array') {
+                            o = [];
+                            for (var i = 0; i < obj.length; i++) {
+                                o.push(obj.clone(obj[i]));
+                            }
+                        } else {
+                            o = {};
+                            for (var k in obj) {
+                                o[k] = obj[k];
+                            }
+                        }
+                        break;
+                    default:
+                        o = obj;
+                        break;
+                }
+                return o;
+            }
+        </script>
+
+        </body>
+
+        </html>

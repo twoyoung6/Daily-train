@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>本示例为JS改变html中的css部分</title>
+<meta name="Keywords" content=""/>
+<meta name="Description" content="" />
+<link href="favicon.ico" type="image/x-icon" rel="icon" />
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<style>
+.div1{margin: 100px auto;width: 200px;background-color: #ebebeb;}
+.red{background-color: #000021;position: absolute;z-index: 0;width:200px ;height:200px }
+.blue{background-color: #0000ff;position: absolute;z-index: 1;width:100px ;height:100px }
+.green{background-color: #ff0022;position: absolute;z-index: 2;width:200px ;height:100px }
+.orange{background-color: orange;position: absolute;z-index: 100;width:100px ;height:200px }
+.newcolor{margin: 50px 350px;width: 350px;}
+</style>
+<!--Z索引，动态定位-->
+<script type="text/javascript">
+      function moveUp(id){
+            var box=document.getElementById(id);
+            if (box.style.zIndex==100)
+            {
+                  box.style.zIndex=2;//置于底层
+            }
+            else if (box.style.zIndex!=3){
+                  box.style.zIndex=100;//置于顶层
+            }
+            else {box.style.zIndex=0;}
+      }
+</script>
+<script type="text/javascript">
+      function changeStyle(){
+            var css=document.getElementById("color_style");
+            if(css.style="div1"){
+                  css.className="newcolor";
+            }
+            else {css.className="div1";}//把被改变的css改变回来，没效果，这里写错了
+      }
+</script>
+</head>
+
+<body>
+<h1>本示例为JS改变html中的css部分及一些常用方法</h1>
+
+<div class="div1" id="color_style">
+<span class="red" id="red" onClick="moveUp(id);"></span>
+<span class="blue" id="blue" onClick="moveUp(id);"></span>
+<span class="green" id="green" onClick="moveUp(id);"></span>
+<span class="orange" id="orange" onClick="moveUp(id);"></span>
+</div>
+<form>
+      <input type="button" name="button" value="改变样式" onClick="changeStyle();">
+</form>
+</body>
+</html>

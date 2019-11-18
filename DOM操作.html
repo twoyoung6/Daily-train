@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM操作</title>
+    <style>
+        .ul input {
+            border: 1px solid #cc6600;
+            background: #000000;
+            margin: 0 10px;
+            list-style: none;
+            border-radius: 7%;
+            color: #fff;
+        }
+
+        .ul input.hover {
+            background: #cc6600;
+        }
+
+        .odd {
+            background: #cc6600;
+        }
+
+        .event {
+            background: #000021;
+        }
+
+        #lis {
+            color: #f20022;
+            list-style: none;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="js/showimg.js" onload="window"/>-->
+    <!-- <script type="text/javascript">
+         function Change() {
+             window.onload = Change;
+             var demo = document.getElementById("img");
+             demo.onclick = function () {
+                 demo.src = "images/biaoqing (3).jpg";
+                 demo.title = "哈哈哈";
+             }
+ //            demo.onmouseout = function () {
+ //                demo.src = "images/045cf55548fc9c0000019ae9543e8f1.png";
+ //            }
+         }
+ //    </script>-->
+</head>
+<body>
+<!--<div>
+    <ul id="lis">
+        <li>1545</li>
+        <li>1545</li>
+        <li>1545</li>
+        <li>1545</li>
+    </ul>
+</div>-->
+<div id="div">
+    <input type="text" id="inp" value="关键词"/>
+    <input type="text"/>
+    <input type="text"/>
+</div>
+<input type="button" id="but" value="写好了"/>
+
+<!--<div>
+    <div><select name="" id="sel">
+        <option value="1">呵呵</option>
+        <option value="2">哈哈</option>
+        <option value="3">你妹</option>
+        <option value="4">啧啧啧</option>
+    </select>
+        <input type="button" value="选择" id="btn"/></div>
+</div>-->
+<!--<center>
+    <div class="ul" id="ul">
+        <input type="button" value="按钮"/>
+        <input type="button" value="按钮"/>
+        <input type="button" value="按钮"/>
+        <input type="button" value="按钮"/>
+    </div>
+    &lt;!&ndash;排他思想的例子&ndash;&gt;
+    <script type="text/javascript">
+        var ul = document.getElementById("ul");
+        var inp = ul.getElementsByTagName("input");
+        for (i = 0; i < inp.length; i++) {
+            inp[i].onclick = function () {
+                for (i = 0; i < inp.length; i++) {
+                    inp[i].className = "";
+                }
+                this.className = "hover";
+            }
+        }
+    </script>-->
+
+
+<img src="images\045cf55548fc9c0000019ae9543e8f1.png" alt="小羊" id="img" title="小羊"/>
+<!--&lt;!&ndash;鼠标点击、经过事件更换图片属性&ndash;&gt;
+<script type="text/javascript">
+    var demo = document.getElementById("img");
+//    var demo = document.getElementsByName();
+    demo.onclick = function () {
+        demo.src = "images/biaoqing (3).jpg";
+        demo.title = "哈哈哈";
+    }
+    demo.onmouseout=function(){
+        demo.src = "images/045cf55548fc9c0000019ae9543e8f1.png";
+    }
+</script>
+<script type="text/javascript">
+    var img = document.getElementById("img");
+    img.onmouseover = function () {
+        img.src = "images/045cf55548fc9c0000019ae9543e8f.png";
+    }
+    img.onmouseout = function () {
+        img.src = "images/045cf55548fc9c0000019ae9543e8f1.png";
+    }
+</script>-->
+
+
+<!--<script type="text/javascript">
+    var inp = document.getElementsByTagName("input");
+    var but = document.getElementById("but");
+    but.onclick = function () {
+        //伪数组的遍历写在对象方法的函数中，因为要对元素进行批量控制，
+        // 只有在触发事件之后再批量获取元素类名才可以执行
+        for (i = 0; i < inp.length; i++) {
+            if (inp[i].type === "text") {
+                if (inp[i].disabled == false) {
+                    inp[i].disabled = true;
+                }
+                else {
+                    inp[i].disabled = false;
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    var inps = document.getElementsByTagName("input");
+    var but = document.getElementById("but");
+    var arr = [];
+    for (i = 0; i < inps.length; i++) {
+        //循环给每一项input的value赋值
+        if (inps[i].type === "text") {
+            inps[i].value = i;
+        }
+    }
+    //循环输出每项input的内容,谨记！！！触发之后才执行循环
+    but.onclick = function () {
+        for (i = 0; i < inps.length; i++) {
+            if (inps[i].type === "text") {
+                arr.push(inps[i].value);
+            }
+        }
+        console.log(arr.join());
+    }
+</script>-->
+
+<!--获取输入框焦点和失去焦点-->
+<script type="text/javascript">
+    var inp = document.getElementById("inp");
+    var isOk = true;
+    inp.onfocus = function () {
+        if (this.value == "关键词" && isOk == true) {
+            this.value = "";
+        }
+    }
+    inp.onblur = function () {
+        if (this.value == "") {
+            this.value = "关键词";
+            isOk = true;
+        }
+    }
+    inp.onkeyup = function () {
+        if (this.value == "关键词") {
+            isOk = false;
+        }
+    }
+</script>
+<!--随机翻牌，select的属性操作-->
+<!--<script type="text/javascript">
+    var sel = document.getElementById("sel");
+    var btn = document.getElementById("btn");
+    var opts = sel.getElementsByTagName("option");
+    btn.onclick = function () {
+//        for (i = 0; i < opts.length; i++) {
+            var i = Math.floor(Math.random() * 4);
+            opts[i].selected = true;
+//        }
+    }
+//            console.dir(opts);//selected属性 true/false
+</script>-->
+<!--<script type="text/javascript">
+    var li = document.getElementById("lis");
+    //    var lis = li.getElementsByTagName("li");
+    var childs = li.children;//获取子元素的集合，也是一个伪数组
+    for (i = 0; i < childs.length; i++) {
+            if (i % 2 == 0) {
+                childs[i].className = "odd";
+            }
+            else {
+                childs[i].className = "event";
+            }
+    }
+</script>-->
+</center>
+</body>
+</html>
