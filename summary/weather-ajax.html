@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>接口调用另一个接口，ajax嵌套</title>
+		<style type="text/css">
+			.weather{
+				width: 450px;
+				margin: 0 auto;
+			}
+			input:last-of-type{
+				width: 100px;
+				border: 1px solid #009CDA;
+				height: 30px;
+				outline: none;
+				background: #009CDA;
+				color: #fff;
+			}
+			input:first-of-type{
+				width: 300px;
+				border: 1px solid #009CDA;
+				height: 30px;
+				outline: none;
+				padding-left: 15px;
+			}
+			li{
+				list-style: none;
+			}
+		</style>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="template.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/html" id="info">
+			{{if retData}}
+				{{each retData as value}}
+					<ul>
+						<li>城市：{{value.city}}</li>
+						<li>风向：{{value.WD}}</li>
+						<li>风速：{{value.WS}}</li>
+						<li>日期：{{value.date}}</li>
+						<li>日出：{{value.sunrise}}</li>
+						<li>天气：{{value.weather}}</li>
+					</ul>
+				{{/each}}
+			{{/if}}
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				$('#btn').click(function(){
+					var cityName = $('#cityName').val();
+					$.ajax({
+						type:"get",
+						url:"http://localhost/summary/citycode.php",
+						dataType:'json',
+						data:{cityName:cityName},
+						success:function(data){
+//							console.log(data);
+							$.ajax({
+								type:"get",
+								url:"http://localhost/summary/cityweather.php",
+								dataType:'json',
+								data:{cityCode:data.cityCode},
+								success:function(data){
+									console.log(data);
+									var html = template('info',data);
+									$('#info').html(html);
+//									var tag = '<ul><li>'+ data.retData.city +'</li><li>'+ data.retData.weather +'</li><li>'+ data.retData.WS +'</li><li>'+ data.retData.WD +'</li><li>'+ data.retData.date +'</li><li>'+'赏日:'+data.retData.sunrise +'</li><li>'+ data.retData.city +'</li>';
+//									$('#info').html(tag);
+								}
+							});
+						}
+					});
+				});
+				$(window).keyup(function(e){
+					if(e.keyCode == 13){
+						$('#btn').click();
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<div class="weather">
+			<input type="text" id="cityName"/>
+			<input type="button" name="" id="btn" value="查天气" />
+			<div class="info" id="info"></div>
+		</div>
+	</body>
+</html>
