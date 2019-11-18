@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.xiaomi {
+				width: 512px;
+				height: 500px;
+				border: 1px solid #f00;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.xiaomi span {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 50px;
+				cursor: pointer;
+				text-align: center;
+				font: 30px/50px "yahei";
+				opacity: 0.6;
+				color: #fff;
+				background-color: #000;
+			}
+			
+			.xiaomi span:hover {
+				opacity: 0.1;
+			}
+			
+			.up {
+				top: 0;
+			}
+			
+			.down {
+				bottom: 0;
+			}
+			
+			.xiaomi img {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="xiaomi">
+			<img src="mi.png" alt="" id="pic" />
+			<span class="up" id="goUp" title="向上滚动图片">↑</span>
+			<span class="down" id="goDown" title="向下滚动图片">↓</span>
+		</div>
+	</body>
+	<script src="../tools/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var $pic = $("#pic");
+			var $goUp = $("#goUp");
+			var $goDown = $("#goDown");
+			var distance = $pic.height() - $('.xiaomi').height();
+			var time = null,
+				dis = 0;
+			$goUp.mouseover(function() {
+				clearInterval(time);
+				
+				time = setInterval(function() {
+					dis -= 3;
+					if(dis < -distance ){
+					clearInterval(time);
+				}else{
+					$pic.css({'top': dis});
+				}
+					
+				}, 30)
+			});
+			$goDown.mouseover(function() {
+				clearInterval(time);
+				time = setInterval(function() {
+					dis += 3;
+					if(dis > 0 ){
+					clearInterval(time);
+				}else{
+					$pic.css({'top': dis});
+				}
+				}, 30)
+			});
+			$('.xiaomi').mouseout(function() {
+				clearInterval(time);
+			})
+		})
+	</script>
+
+</html>
